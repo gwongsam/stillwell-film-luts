@@ -1,0 +1,23 @@
+2026-10-29 — S2 gold200
+Derived from spektrafilm by Andrea Volpato, https://github.com/andreavolpato/spektrafilm
+License: CC BY-SA 4.0. Original profiles kodak_gold_200.json, kodak_portra_endura.json were not modified.
+Source copies: data/spektrafilm/; upstream commit 3bb2c2d2801ff68b92019cf1dbcbb133d60832bc.
+Derivative path: original profiles -> frozen v5/S1 Burns tables and midscale anchors -> fixed M4s model -> one 11-parameter fit to this stock's black-box reference -> direct 65^3 node bake -> this package.
+Declared paper and frozen film data; cine5207 retains v5 D55 viewing and LAD 1.09/1.06/1.03; other negatives retain D50 and LAD .75/.75/.75. Selected W/O/P/V switches are recorded below. No spatial processing or dye double pass.
+Parameters: data/derived-s2/gold200/fit-M4s.json. Input model Burns2020 and M4s couplers are unchanged from v5.
+LUT2 configuration: 65^3, w=0.5, 1024-point shaper, linear output, trilinear interpolation; log2 middle-gray-relative -9..+8 EV encoding. Neutral 4097-point L* derivative, normalized trapezoidal integration, linear resampling to 1024 points. No table smoothing or repair.
+Output is rounded to little-endian float32 in B,G,R,channel order (R fastest); float16 is IEEE binary16 rounding of float32; text .cube uses nine significant digits. Shaper is little-endian float32. Both complete delivered paths are evaluated against unquantized model output on all seven photos and fixed probes.
+
+S2 actual selected switches: {"white_mode": "W1", "operator": {"form": "O2", "k": 0.5216820961181742, "w": 0.712683715580258}, "print_mode": "P0"}
+Gates (a / b / c-prime / d): {"gates": {"a": {"value": 1.9761834021316926, "limit": 6, "passed": true}, "b": {"value": 0.563508732859205, "limit": 3, "passed": true, "failed_rows": []}, "c_prime": {"value": 0.20083451546887332, "limit": 1.5, "passed": true}, "d": {"value": 0.7251980239317217, "limit": 0.7294594398157832, "passed": true}, "c_report_only": {"IMG_2694": {"ours_C": 23.822037314282717, "reference_C": 26.987493408983532, "old_gate_pass": false}, "IMG_5517": {"ours_C": 35.403035208919306, "reference_C": 39.09810681273596, "old_gate_pass": false}}}, "passed": true}
+Gray-axis allowance: 0.45 (original 0.30); relaxation used: True. Other budgets unchanged.
+
+S2 decision explanation: Added common O2 SDR highlight shoulder after the model: k=0.5216820961181742, w=0.712683715580258. W1 retained after EDR W0/W1 comparison. P3 was tested and globally rejected: C200 gray a/b error improves 16.8724%, below required 30%; P0 retained. Slide V candidates are not applicable.
+
+2026-10-30 — S3b (supersedes historical interpolation/selection/budget statements above)
+Interpolation: tetrahedral / 四面体; App engine contract effective 2026-10-30 (App implementation owned by reviewer).
+Selected weight: 0.5. Selection: w=0.5 first; otherwise minimum passing f16 p99.9 among 0.25/0.75.
+Budgets (tetrahedral, serialized f16 cube + f32 shaper): {"median": 0.03942663298874641, "p99": 0.1873216813862206, "p99_9": 0.290479078998332, "chart_max": 0.5720996148530794, "neutral_max": 0.15882935682111027}
+Limits: {"median": 0.2, "p99": 0.5, "p99_9": 1.0, "chart_max": 1.0, "neutral_max": 0.3}. Gray-axis relaxation used: False.
+Previously baked tables and shapers copied byte for byte with SHA-256 verification; no rebake except new Verita model or previously missing weights.
+Photo model references and SHA: data/derived-s3b/gold200/photo-model-references.json

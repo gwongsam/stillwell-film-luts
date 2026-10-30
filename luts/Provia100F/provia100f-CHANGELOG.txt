@@ -1,0 +1,21 @@
+2026-10-29 — S3 provia100f
+Derived from spektrafilm by Andrea Volpato, https://github.com/andreavolpato/spektrafilm
+License: CC BY-SA 4.0. Original profiles fujifilm_provia_100f.json were not modified.
+Source copies: data/spektrafilm/; upstream commit 3bb2c2d2801ff68b92019cf1dbcbb133d60832bc.
+Derivative path: original profiles -> unchanged S1 Burns projection tables and midscale anchors -> fixed M4s model -> one 11-parameter fit to this stock's black-box reference -> direct 65^3 node bake -> this package.
+Declared paper and unchanged film data. Negatives: S2 final W1/P0 with frozen O2 and LAD .75/.75/.75; S2 D55/W1 Viewer for 2383, D50 StockViewer for still-photo papers. Reversal: V4 FixedWhiteViewer, unfiltered D50 white, no print stage and no output compressor. Configuration is recorded below. No spatial processing or dye double pass.
+Parameters: data/derived-s3/provia100f/fit-M4s.json. Input model Burns2020 and M4s couplers are unchanged from v5.
+LUT2 configuration: 65^3, w=0.25, 1024-point shaper, linear output, trilinear interpolation; log2 middle-gray-relative -9..+8 EV encoding. Neutral 4097-point L* derivative, normalized trapezoidal integration, linear resampling to 1024 points. No table smoothing or repair.
+Output is rounded to little-endian float32 in B,G,R,channel order (R fastest); float16 is IEEE binary16 rounding of float32; text .cube uses nine significant digits. Shaper is little-endian float32. Both complete delivered paths are evaluated against unquantized model output on all seven photos and fixed probes.
+
+S3 actual selected switches: {"white_mode": "W1", "operator": null, "print_mode": "P0", "view_mode": "V4"}
+Gates (a / b / c-prime): {"gates": {"a": {"value": 2.5318178333925294, "limit": 6, "passed": true}, "b": {"value": 1.1536502977057381, "limit": 3, "failed_rows": [], "passed": true}, "c_prime": {"value": 0.36272066624758637, "limit": 1.5, "passed": true}}, "passed": true, "c_report_only": {"IMG_2694": {"ours_C": 17.31677690671647, "reference_C": 19.818323735229203, "old_gate_pass": true}, "IMG_5517": {"ours_C": 25.780706563163072, "reference_C": 28.182803221235638, "old_gate_pass": true}}}
+Gray-axis allowance: 0.45 (original 0.30); relaxation used: True. Other budgets unchanged.
+
+2026-10-30 — S3b (supersedes historical interpolation/selection/budget statements above)
+Interpolation: tetrahedral / 四面体; App engine contract effective 2026-10-30 (App implementation owned by reviewer).
+Selected weight: 0.5. Selection: w=0.5 first; otherwise minimum passing f16 p99.9 among 0.25/0.75.
+Budgets (tetrahedral, serialized f16 cube + f32 shaper): {"median": 0.02956954662980574, "p99": 0.13121173669238345, "p99_9": 0.2018873635513253, "chart_max": 0.43410197835982234, "neutral_max": 0.15816860054493492}
+Limits: {"median": 0.2, "p99": 0.5, "p99_9": 1.0, "chart_max": 1.0, "neutral_max": 0.3}. Gray-axis relaxation used: False.
+Previously baked tables and shapers copied byte for byte with SHA-256 verification; no rebake except new Verita model or previously missing weights.
+Photo model references and SHA: data/derived-s3b/provia100f/photo-model-references.json

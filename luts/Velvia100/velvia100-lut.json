@@ -1,0 +1,194 @@
+{
+  "name": "velvia100 S3b",
+  "version": "lut2",
+  "source_model": {
+    "version": "s3",
+    "class": "tools.model_s3.S3Pipeline('velvia100')",
+    "form": "M4s",
+    "input_method": "Burns2020",
+    "configuration": {
+      "white_mode": "W1",
+      "operator": null,
+      "print_mode": "P0",
+      "view_mode": "V4"
+    },
+    "film": "fujifilm_velvia_100",
+    "print": null,
+    "parameters_path": "data/derived-s3b/velvia100/fit-M4s.json",
+    "parameters_sha256": "733b709445364f724c1af539e4a3e82265fed8c9bbf168faef086e4f2ca5e27f",
+    "model_path": "tools/model_s3.py",
+    "model_sha256": "974d310bc9006515010dc0ddfa973a8f9ae600ae5f775ee9cc07daf979d60059",
+    "stock_adapter_sha256": "f2681b8a5204a75ce099c5ab78988dcd2d63206e956921fccbfa36d513f957d1",
+    "table_sha256": "afe9ff0a5e45c5d279e4769607a762e3b1ffab0624fe49278c70a17c4ff8e126",
+    "profiles": {
+      "fujifilm_velvia_100.json": "af696fa9662e0483cb9428d2939675044f2016fc3fad760b50a20a0a586fc04b"
+    }
+  },
+  "input": {
+    "color_space": "scene-linear ProPhoto RGB (ROMM primaries), D50",
+    "middle_gray": 0.18,
+    "encoding": "e = clip((log2(max(v, 0.18*2^lo)/0.18)-lo)/(hi-lo), 0, 1)",
+    "lo": -9.0,
+    "hi": 8.0,
+    "v_lo": 0.0003515625,
+    "v_hi": 46.08,
+    "clamping": "per channel: v<=v_lo (including zero/negative) maps to 0; v>=v_hi maps to 1",
+    "grid": "s_i=i/(n-1); e_i=P_w^-1(s_i), inverse of the 1024-point linear-interpolated table; v_i=0.18*2^(-9+17*e_i)"
+  },
+  "output": {
+    "color_space": "linear ProPhoto RGB (ROMM primaries), D50",
+    "display_referred": true,
+    "clipped": false,
+    "range_min_RGB": [
+      0.00031313716317526996,
+      -0.005236989352852106,
+      0.0004549922305159271
+    ],
+    "range_max_RGB": [
+      0.6678381562232971,
+      0.6679864525794983,
+      0.664629340171814
+    ]
+  },
+  "size": 65,
+  "interpolation": "tetrahedral",
+  "storage": {
+    "shape": [
+      65,
+      65,
+      65,
+      3
+    ],
+    "axis_order": [
+      "b",
+      "g",
+      "r",
+      "channel"
+    ],
+    "channel_order": [
+      "R",
+      "G",
+      "B"
+    ],
+    "endianness": "little",
+    "fastest_grid_axis": "R"
+  },
+  "data_files": {
+    "f32": {
+      "name": "velvia100-cube65.f32",
+      "sha256": "64ab752561702b6b7edb53bcc83edc48ac43da120ea472bda6260ef17b0c96c8",
+      "bytes": 3295500
+    },
+    "f16": {
+      "name": "velvia100-cube65.f16",
+      "sha256": "01713625ed66300434a4f59d5f71e77506accb8f2ff2619bba8b342e70dfc1c2",
+      "bytes": 1647750
+    },
+    "cube": {
+      "name": "velvia100-cube65.cube",
+      "sha256": "bdf5b4a8b61c1fd66795fae605b7625f1629ee065b2afd04c6a1abdca39ec7d3",
+      "bytes": 10383247
+    },
+    "shaper_f32": {
+      "name": "velvia100-shaper1024.f32",
+      "sha256": "c6708a1f412dec6b08a82a6c9842ee5b84b751a7de95f0464c78524502ee8795",
+      "bytes": 4096
+    },
+    "changelog": {
+      "name": "velvia100-CHANGELOG.txt",
+      "sha256": "ef848017b4b7230afdea3f21dacad0568a5020d1dcd009e2880600d72b708a63",
+      "bytes": 3128
+    },
+    "license": {
+      "name": "SPEKTRAFILM_LICENSE.txt",
+      "sha256": "76d629501783ae52e8d63aee1e054c1e1a9713b9fe7d36fb306e25b1d14b24e9",
+      "bytes": 23677
+    }
+  },
+  "license": "CC BY-SA 4.0",
+  "attribution": "Derived from spektrafilm by Andrea Volpato, https://github.com/andreavolpato/spektrafilm",
+  "error_on_frozen_model": {
+    "budget_values": {
+      "median": 0.030363368054786424,
+      "p99": 0.19468222843116634,
+      "p99_9": 0.2699887348231119,
+      "chart_max": 0.6102818854838783,
+      "neutral_max": 0.1793830733903096
+    },
+    "delivered_f16_budget_values": {
+      "median": 0.030363368054786424,
+      "p99": 0.19468222843116634,
+      "p99_9": 0.2699887348231119,
+      "chart_max": 0.6102818854838783,
+      "neutral_max": 0.1793830733903096
+    },
+    "budgets": {
+      "median": 0.2,
+      "p99": 0.5,
+      "p99_9": 1.0,
+      "chart_max": 1.0,
+      "neutral_max": 0.3
+    },
+    "metric": "D50 CIEDE2000, unclipped outputs before TIFF",
+    "evaluated_photos": 7,
+    "interpolation": "tetrahedral",
+    "qualification_precision": "f16"
+  },
+  "output_encoding": {
+    "name": "linear",
+    "forward": "identity",
+    "inverse": "identity",
+    "stored_range_min_RGB": [
+      0.00031313716317526996,
+      -0.005236989352852106,
+      0.0004549922305159271
+    ],
+    "stored_range_max_RGB": [
+      0.6678381562232971,
+      0.6679864525794983,
+      0.664629340171814
+    ],
+    "negative_values": "linear branch, no clipping"
+  },
+  "shaper": {
+    "w": 0.5,
+    "K": 1024,
+    "sample_domain": "e_k=k/1023",
+    "interpolation": "linear",
+    "file": "velvia100-shaper1024.f32",
+    "sha256": "c6708a1f412dec6b08a82a6c9842ee5b84b751a7de95f0464c78524502ee8795",
+    "dtype": "little-endian float32",
+    "generation_points": 4097,
+    "density": "w*abs(np.gradient(N,e))/mean(abs(np.gradient(N,e)))+(1-w)",
+    "integration": "trapezoidal, then normalize to [0,1]",
+    "bake_precision": "1024-point float64 table",
+    "serialization_validation": "data/derived-s3b/velvia100/lut-delivery.json"
+  },
+  "path": [
+    {
+      "step": 1,
+      "operation": "log_encode",
+      "formula": "e = clip((log2(max(v, 0.18*2^lo)/0.18)-lo)/(hi-lo), 0, 1)"
+    },
+    {
+      "step": 2,
+      "operation": "shaper",
+      "formula": "s=P_w(e), linear interpolation of 1024 scalar samples per channel"
+    },
+    {
+      "step": 3,
+      "operation": "cube",
+      "formula": "q=tetrahedral(cube,s)"
+    },
+    {
+      "step": 4,
+      "operation": "output_decode",
+      "formula": "identity"
+    }
+  ],
+  "s3b": {
+    "gray_axis_relaxed": false,
+    "photo_model_references": "data/derived-s3b/velvia100/photo-model-references.json",
+    "candidate_provenance": "data/derived-s3b/velvia100/w50-provenance.json"
+  }
+}

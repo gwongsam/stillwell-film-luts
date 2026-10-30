@@ -1,0 +1,193 @@
+{
+  "name": "chroma64 S3b",
+  "version": "lut2",
+  "source_model": {
+    "version": "s2",
+    "class": "tools.model_s2.S2Pipeline('chroma64') with FixedWhiteViewer (V4)",
+    "form": "M4s",
+    "input_method": "Burns2020",
+    "configuration": {
+      "view_mode": "V4 (fixed D50 white)"
+    },
+    "film": "kodak_kodachrome_64",
+    "print": null,
+    "parameters_path": "data/derived-s2b/chroma64/fit-M4s.json",
+    "parameters_sha256": "b373cdf18a995622ce23e4a5819e09aa96f0cc363c83599ff7a23e0becf40089",
+    "model_path": "tools/model_s2.py",
+    "model_sha256": "3be8a32ed7ce87b936d9f88652f93cff923098cc0cc7e40de6994de9d9dbf19a",
+    "stock_adapter_sha256": "f2681b8a5204a75ce099c5ab78988dcd2d63206e956921fccbfa36d513f957d1",
+    "table_sha256": "543825952f9d2adb9fdba0eff8eed954c4926713e7de8c40e2f6261cb5a4c72e",
+    "profiles": {
+      "kodak_kodachrome_64.json": "f88ede487219cf75090ed6663af6923c595707b3c48819f2ccf27122130e921d"
+    },
+    "viewer_path": "design/series1/diff/s2b.py",
+    "viewer_sha256": "402eee24d97b346519106c92fa6019168f2acd0501702777f419f19c6f7d39e5"
+  },
+  "input": {
+    "color_space": "scene-linear ProPhoto RGB (ROMM primaries), D50",
+    "middle_gray": 0.18,
+    "encoding": "e = clip((log2(max(v, 0.18*2^lo)/0.18)-lo)/(hi-lo), 0, 1)",
+    "lo": -9.0,
+    "hi": 8.0,
+    "v_lo": 0.0003515625,
+    "v_hi": 46.08,
+    "clamping": "per channel: v<=v_lo (including zero/negative) maps to 0; v>=v_hi maps to 1",
+    "grid": "s_i=i/(n-1); e_i=P_w^-1(s_i), inverse of the 1024-point linear-interpolated table; v_i=0.18*2^(-9+17*e_i)"
+  },
+  "output": {
+    "color_space": "linear ProPhoto RGB (ROMM primaries), D50",
+    "display_referred": true,
+    "clipped": false,
+    "range_min_RGB": [
+      0.0010283936280757189,
+      0.0009058112627826631,
+      0.0004383810155559331
+    ],
+    "range_max_RGB": [
+      0.6172864437103271,
+      0.6236340403556824,
+      0.5528553128242493
+    ]
+  },
+  "size": 65,
+  "interpolation": "tetrahedral",
+  "storage": {
+    "shape": [
+      65,
+      65,
+      65,
+      3
+    ],
+    "axis_order": [
+      "b",
+      "g",
+      "r",
+      "channel"
+    ],
+    "channel_order": [
+      "R",
+      "G",
+      "B"
+    ],
+    "endianness": "little",
+    "fastest_grid_axis": "R"
+  },
+  "data_files": {
+    "f32": {
+      "name": "chroma64-cube65.f32",
+      "sha256": "1426cbdad259dd9eb679e629a722cfc50111f2a175d855db6ade7672acba733d",
+      "bytes": 3295500
+    },
+    "f16": {
+      "name": "chroma64-cube65.f16",
+      "sha256": "4d9f9fd45dfffe6cba3e3017ba16a8034e0c0b0d5507d61c0d23d5b953e7c356",
+      "bytes": 1647750
+    },
+    "cube": {
+      "name": "chroma64-cube65.cube",
+      "sha256": "05369373f019c9b1566dcd8046d4b4bf323bdb2d48d2d76216d74fa23f36d0ed",
+      "bytes": 10306340
+    },
+    "shaper_f32": {
+      "name": "chroma64-shaper1024.f32",
+      "sha256": "aec31ff281b4c10558ac3c11dd9a646cd3153228bdd17ad2c29b4c665575e69f",
+      "bytes": 4096
+    },
+    "changelog": {
+      "name": "chroma64-CHANGELOG.txt",
+      "sha256": "5c832f2c18c08d1109921f5dab13b7a38ff0bab9e77ee10ad896c25f576332e5",
+      "bytes": 2780
+    },
+    "license": {
+      "name": "SPEKTRAFILM_LICENSE.txt",
+      "sha256": "76d629501783ae52e8d63aee1e054c1e1a9713b9fe7d36fb306e25b1d14b24e9",
+      "bytes": 23677
+    }
+  },
+  "license": "CC BY-SA 4.0",
+  "attribution": "Derived from spektrafilm by Andrea Volpato, https://github.com/andreavolpato/spektrafilm",
+  "error_on_frozen_model": {
+    "budget_values": {
+      "median": 0.030164517027376193,
+      "p99": 0.11965006197416624,
+      "p99_9": 0.1616760813390954,
+      "chart_max": 0.5126559593416674,
+      "neutral_max": 0.157233409084535
+    },
+    "delivered_f16_budget_values": {
+      "median": 0.030164517027376193,
+      "p99": 0.11965006197416624,
+      "p99_9": 0.1616760813390954,
+      "chart_max": 0.5126559593416674,
+      "neutral_max": 0.157233409084535
+    },
+    "budgets": {
+      "median": 0.2,
+      "p99": 0.5,
+      "p99_9": 1.0,
+      "chart_max": 1.0,
+      "neutral_max": 0.3
+    },
+    "metric": "D50 CIEDE2000, unclipped outputs before TIFF",
+    "evaluated_photos": 7,
+    "interpolation": "tetrahedral",
+    "qualification_precision": "f16"
+  },
+  "output_encoding": {
+    "name": "linear",
+    "forward": "identity",
+    "inverse": "identity",
+    "stored_range_min_RGB": [
+      0.0010283936280757189,
+      0.0009058112627826631,
+      0.0004383810155559331
+    ],
+    "stored_range_max_RGB": [
+      0.6172864437103271,
+      0.6236340403556824,
+      0.5528553128242493
+    ],
+    "negative_values": "linear branch, no clipping"
+  },
+  "shaper": {
+    "w": 0.5,
+    "K": 1024,
+    "sample_domain": "e_k=k/1023",
+    "interpolation": "linear",
+    "file": "chroma64-shaper1024.f32",
+    "sha256": "aec31ff281b4c10558ac3c11dd9a646cd3153228bdd17ad2c29b4c665575e69f",
+    "dtype": "little-endian float32",
+    "generation_points": 4097,
+    "density": "w*abs(np.gradient(N,e))/mean(abs(np.gradient(N,e)))+(1-w)",
+    "integration": "trapezoidal, then normalize to [0,1]",
+    "bake_precision": "1024-point float64 table",
+    "serialization_validation": "data/derived-s3b/chroma64/lut-delivery.json"
+  },
+  "path": [
+    {
+      "step": 1,
+      "operation": "log_encode",
+      "formula": "e = clip((log2(max(v, 0.18*2^lo)/0.18)-lo)/(hi-lo), 0, 1)"
+    },
+    {
+      "step": 2,
+      "operation": "shaper",
+      "formula": "s=P_w(e), linear interpolation of 1024 scalar samples per channel"
+    },
+    {
+      "step": 3,
+      "operation": "cube",
+      "formula": "q=tetrahedral(cube,s)"
+    },
+    {
+      "step": 4,
+      "operation": "output_decode",
+      "formula": "identity"
+    }
+  ],
+  "s3b": {
+    "gray_axis_relaxed": false,
+    "photo_model_references": "data/derived-s3b/chroma64/photo-model-references.json",
+    "candidate_provenance": "data/derived-s3b/chroma64/w50-provenance.json"
+  }
+}

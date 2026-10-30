@@ -1,0 +1,198 @@
+{
+  "name": "ultramax400 S3b",
+  "version": "lut2",
+  "source_model": {
+    "version": "s3",
+    "class": "tools.model_s3.S3Pipeline('ultramax400')",
+    "form": "M4s",
+    "input_method": "Burns2020",
+    "configuration": {
+      "white_mode": "W1",
+      "operator": {
+        "form": "O2",
+        "k": 0.5216820961181742,
+        "w": 0.712683715580258
+      },
+      "print_mode": "P0"
+    },
+    "film": "kodak_ultramax_400",
+    "print": "kodak_portra_endura",
+    "parameters_path": "data/derived-s3/ultramax400/fit-M4s.json",
+    "parameters_sha256": "d24028743fced3d393c46e75c67d3ad83a2a893da10888d157d2209a58b3aa47",
+    "model_path": "tools/model_s3.py",
+    "model_sha256": "974d310bc9006515010dc0ddfa973a8f9ae600ae5f775ee9cc07daf979d60059",
+    "stock_adapter_sha256": "f2681b8a5204a75ce099c5ab78988dcd2d63206e956921fccbfa36d513f957d1",
+    "table_sha256": "7ccbf92b8c2ae6d6276425a69751c43c6ff954561ecd93933e2120f7e51186d0",
+    "profiles": {
+      "kodak_ultramax_400.json": "248b78bdcc4fdbe864e30f193f900059ecd98cbdb276c88ad8f6f5b520137901",
+      "kodak_portra_endura.json": "e3bb6069e02d088d8080d38ce28035816038f62786e2aff9176bf4aeeb4820a0"
+    }
+  },
+  "input": {
+    "color_space": "scene-linear ProPhoto RGB (ROMM primaries), D50",
+    "middle_gray": 0.18,
+    "encoding": "e = clip((log2(max(v, 0.18*2^lo)/0.18)-lo)/(hi-lo), 0, 1)",
+    "lo": -9.0,
+    "hi": 8.0,
+    "v_lo": 0.0003515625,
+    "v_hi": 46.08,
+    "clamping": "per channel: v<=v_lo (including zero/negative) maps to 0; v>=v_hi maps to 1",
+    "grid": "s_i=i/(n-1); e_i=P_w^-1(s_i), inverse of the 1024-point linear-interpolated table; v_i=0.18*2^(-9+17*e_i)"
+  },
+  "output": {
+    "color_space": "linear ProPhoto RGB (ROMM primaries), D50",
+    "display_referred": true,
+    "clipped": false,
+    "range_min_RGB": [
+      0.004387783817946911,
+      0.004176267422735691,
+      0.005446802359074354
+    ],
+    "range_max_RGB": [
+      0.7115851044654846,
+      0.6919425129890442,
+      0.7404831051826477
+    ]
+  },
+  "size": 65,
+  "interpolation": "tetrahedral",
+  "storage": {
+    "shape": [
+      65,
+      65,
+      65,
+      3
+    ],
+    "axis_order": [
+      "b",
+      "g",
+      "r",
+      "channel"
+    ],
+    "channel_order": [
+      "R",
+      "G",
+      "B"
+    ],
+    "endianness": "little",
+    "fastest_grid_axis": "R"
+  },
+  "data_files": {
+    "f32": {
+      "name": "ultramax400-cube65.f32",
+      "sha256": "8cc9283c0b2fc8f519da762a7aa2d6a80f4bc4360f4da48e6f4c402b09db4aed",
+      "bytes": 3295500
+    },
+    "f16": {
+      "name": "ultramax400-cube65.f16",
+      "sha256": "a18bc04534a5c794caa9605a0917b68fd5d5fa3a1a179917ed5f6ecba9cad8cf",
+      "bytes": 1647750
+    },
+    "cube": {
+      "name": "ultramax400-cube65.cube",
+      "sha256": "41ad8ad5673c4d81465c89f5f1e389b55a01a5bd1243dd4e1029c62435942bf6",
+      "bytes": 10225610
+    },
+    "shaper_f32": {
+      "name": "ultramax400-shaper1024.f32",
+      "sha256": "da7b6a53f9b84a2ffab32592e819291fba23dc262c3e580f6a2ea3ffb11f6011",
+      "bytes": 4096
+    },
+    "changelog": {
+      "name": "ultramax400-CHANGELOG.txt",
+      "sha256": "a915de0dc17daba2b05ee8d66dd7b51e6310f6832be21d6750054382bf069033",
+      "bytes": 3135
+    },
+    "license": {
+      "name": "SPEKTRAFILM_LICENSE.txt",
+      "sha256": "76d629501783ae52e8d63aee1e054c1e1a9713b9fe7d36fb306e25b1d14b24e9",
+      "bytes": 23677
+    }
+  },
+  "license": "CC BY-SA 4.0",
+  "attribution": "Derived from spektrafilm by Andrea Volpato, https://github.com/andreavolpato/spektrafilm",
+  "error_on_frozen_model": {
+    "budget_values": {
+      "median": 0.0401954282656625,
+      "p99": 0.1704777503141563,
+      "p99_9": 0.24165448026294206,
+      "chart_max": 0.754479775544767,
+      "neutral_max": 0.12003569957474676
+    },
+    "delivered_f16_budget_values": {
+      "median": 0.0401954282656625,
+      "p99": 0.1704777503141563,
+      "p99_9": 0.24165448026294206,
+      "chart_max": 0.754479775544767,
+      "neutral_max": 0.12003569957474676
+    },
+    "budgets": {
+      "median": 0.2,
+      "p99": 0.5,
+      "p99_9": 1.0,
+      "chart_max": 1.0,
+      "neutral_max": 0.3
+    },
+    "metric": "D50 CIEDE2000, unclipped outputs before TIFF",
+    "evaluated_photos": 7,
+    "interpolation": "tetrahedral",
+    "qualification_precision": "f16"
+  },
+  "output_encoding": {
+    "name": "linear",
+    "forward": "identity",
+    "inverse": "identity",
+    "stored_range_min_RGB": [
+      0.004387783817946911,
+      0.004176267422735691,
+      0.005446802359074354
+    ],
+    "stored_range_max_RGB": [
+      0.7115851044654846,
+      0.6919425129890442,
+      0.7404831051826477
+    ],
+    "negative_values": "linear branch, no clipping"
+  },
+  "shaper": {
+    "w": 0.5,
+    "K": 1024,
+    "sample_domain": "e_k=k/1023",
+    "interpolation": "linear",
+    "file": "ultramax400-shaper1024.f32",
+    "sha256": "da7b6a53f9b84a2ffab32592e819291fba23dc262c3e580f6a2ea3ffb11f6011",
+    "dtype": "little-endian float32",
+    "generation_points": 4097,
+    "density": "w*abs(np.gradient(N,e))/mean(abs(np.gradient(N,e)))+(1-w)",
+    "integration": "trapezoidal, then normalize to [0,1]",
+    "bake_precision": "1024-point float64 table",
+    "serialization_validation": "data/derived-s3b/ultramax400/lut-delivery.json"
+  },
+  "path": [
+    {
+      "step": 1,
+      "operation": "log_encode",
+      "formula": "e = clip((log2(max(v, 0.18*2^lo)/0.18)-lo)/(hi-lo), 0, 1)"
+    },
+    {
+      "step": 2,
+      "operation": "shaper",
+      "formula": "s=P_w(e), linear interpolation of 1024 scalar samples per channel"
+    },
+    {
+      "step": 3,
+      "operation": "cube",
+      "formula": "q=tetrahedral(cube,s)"
+    },
+    {
+      "step": 4,
+      "operation": "output_decode",
+      "formula": "identity"
+    }
+  ],
+  "s3b": {
+    "gray_axis_relaxed": false,
+    "photo_model_references": "data/derived-s3b/ultramax400/photo-model-references.json",
+    "candidate_provenance": "data/derived-s3b/ultramax400/w50-provenance.json"
+  }
+}

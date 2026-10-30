@@ -1,0 +1,194 @@
+{
+  "name": "ektachrome100 S3b",
+  "version": "lut2",
+  "source_model": {
+    "version": "s3",
+    "class": "tools.model_s3.S3Pipeline('ektachrome100')",
+    "form": "M4s",
+    "input_method": "Burns2020",
+    "configuration": {
+      "white_mode": "W1",
+      "operator": null,
+      "print_mode": "P0",
+      "view_mode": "V4"
+    },
+    "film": "kodak_ektachrome_100",
+    "print": null,
+    "parameters_path": "data/derived-s3/ektachrome100/fit-M4s.json",
+    "parameters_sha256": "171ea9736a7fa78e181e751764a8722253fbead026dd21c457aa0481eb818bb2",
+    "model_path": "tools/model_s3.py",
+    "model_sha256": "974d310bc9006515010dc0ddfa973a8f9ae600ae5f775ee9cc07daf979d60059",
+    "stock_adapter_sha256": "f2681b8a5204a75ce099c5ab78988dcd2d63206e956921fccbfa36d513f957d1",
+    "table_sha256": "4cdd3de0175d4a9440b0473229a5bcb30d260937cf271876b8a29c0a5eab5d5d",
+    "profiles": {
+      "kodak_ektachrome_100.json": "ef194fd80c60a1ac42bbbf1df458b4d047fc07bc17eebce674bb3bcba2ccf62a"
+    }
+  },
+  "input": {
+    "color_space": "scene-linear ProPhoto RGB (ROMM primaries), D50",
+    "middle_gray": 0.18,
+    "encoding": "e = clip((log2(max(v, 0.18*2^lo)/0.18)-lo)/(hi-lo), 0, 1)",
+    "lo": -9.0,
+    "hi": 8.0,
+    "v_lo": 0.0003515625,
+    "v_hi": 46.08,
+    "clamping": "per channel: v<=v_lo (including zero/negative) maps to 0; v>=v_hi maps to 1",
+    "grid": "s_i=i/(n-1); e_i=P_w^-1(s_i), inverse of the 1024-point linear-interpolated table; v_i=0.18*2^(-9+17*e_i)"
+  },
+  "output": {
+    "color_space": "linear ProPhoto RGB (ROMM primaries), D50",
+    "display_referred": true,
+    "clipped": false,
+    "range_min_RGB": [
+      0.0003514809941407293,
+      0.00031110012787394226,
+      0.00026569966576062143
+    ],
+    "range_max_RGB": [
+      0.7202825546264648,
+      0.7102236747741699,
+      0.694546639919281
+    ]
+  },
+  "size": 65,
+  "interpolation": "tetrahedral",
+  "storage": {
+    "shape": [
+      65,
+      65,
+      65,
+      3
+    ],
+    "axis_order": [
+      "b",
+      "g",
+      "r",
+      "channel"
+    ],
+    "channel_order": [
+      "R",
+      "G",
+      "B"
+    ],
+    "endianness": "little",
+    "fastest_grid_axis": "R"
+  },
+  "data_files": {
+    "f32": {
+      "name": "ektachrome100-cube65.f32",
+      "sha256": "6794b53bc25ebb83d1d4ef563a529822a550407c35840cc8597b52e492f69a54",
+      "bytes": 3295500
+    },
+    "f16": {
+      "name": "ektachrome100-cube65.f16",
+      "sha256": "400c1a15bd5fa4d7a168051a4f37afab9f913502649d865d65f45d2064a0872a",
+      "bytes": 1647750
+    },
+    "cube": {
+      "name": "ektachrome100-cube65.cube",
+      "sha256": "1d294b4e822b6430ab9f9135d1b069ba0197d34374980106a9e723dfb60ae5a4",
+      "bytes": 10407723
+    },
+    "shaper_f32": {
+      "name": "ektachrome100-shaper1024.f32",
+      "sha256": "0adfe3168acbea8edade0bef5d27ccb0c834a3147394a8a6c2ff2ef4279544fb",
+      "bytes": 4096
+    },
+    "changelog": {
+      "name": "ektachrome100-CHANGELOG.txt",
+      "sha256": "2ea8498893bf1665f78b6bfa744a3040044f4088a9e0ba8425d5ace9fadf107c",
+      "bytes": 3143
+    },
+    "license": {
+      "name": "SPEKTRAFILM_LICENSE.txt",
+      "sha256": "76d629501783ae52e8d63aee1e054c1e1a9713b9fe7d36fb306e25b1d14b24e9",
+      "bytes": 23677
+    }
+  },
+  "license": "CC BY-SA 4.0",
+  "attribution": "Derived from spektrafilm by Andrea Volpato, https://github.com/andreavolpato/spektrafilm",
+  "error_on_frozen_model": {
+    "budget_values": {
+      "median": 0.029231148378252456,
+      "p99": 0.14158964179340855,
+      "p99_9": 0.2043298634419572,
+      "chart_max": 0.35604798354300177,
+      "neutral_max": 0.17655548494737164
+    },
+    "delivered_f16_budget_values": {
+      "median": 0.029231148378252456,
+      "p99": 0.14158964179340855,
+      "p99_9": 0.2043298634419572,
+      "chart_max": 0.35604798354300177,
+      "neutral_max": 0.17655548494737164
+    },
+    "budgets": {
+      "median": 0.2,
+      "p99": 0.5,
+      "p99_9": 1.0,
+      "chart_max": 1.0,
+      "neutral_max": 0.3
+    },
+    "metric": "D50 CIEDE2000, unclipped outputs before TIFF",
+    "evaluated_photos": 7,
+    "interpolation": "tetrahedral",
+    "qualification_precision": "f16"
+  },
+  "output_encoding": {
+    "name": "linear",
+    "forward": "identity",
+    "inverse": "identity",
+    "stored_range_min_RGB": [
+      0.0003514809941407293,
+      0.00031110012787394226,
+      0.00026569966576062143
+    ],
+    "stored_range_max_RGB": [
+      0.7202825546264648,
+      0.7102236747741699,
+      0.694546639919281
+    ],
+    "negative_values": "linear branch, no clipping"
+  },
+  "shaper": {
+    "w": 0.5,
+    "K": 1024,
+    "sample_domain": "e_k=k/1023",
+    "interpolation": "linear",
+    "file": "ektachrome100-shaper1024.f32",
+    "sha256": "0adfe3168acbea8edade0bef5d27ccb0c834a3147394a8a6c2ff2ef4279544fb",
+    "dtype": "little-endian float32",
+    "generation_points": 4097,
+    "density": "w*abs(np.gradient(N,e))/mean(abs(np.gradient(N,e)))+(1-w)",
+    "integration": "trapezoidal, then normalize to [0,1]",
+    "bake_precision": "1024-point float64 table",
+    "serialization_validation": "data/derived-s3b/ektachrome100/lut-delivery.json"
+  },
+  "path": [
+    {
+      "step": 1,
+      "operation": "log_encode",
+      "formula": "e = clip((log2(max(v, 0.18*2^lo)/0.18)-lo)/(hi-lo), 0, 1)"
+    },
+    {
+      "step": 2,
+      "operation": "shaper",
+      "formula": "s=P_w(e), linear interpolation of 1024 scalar samples per channel"
+    },
+    {
+      "step": 3,
+      "operation": "cube",
+      "formula": "q=tetrahedral(cube,s)"
+    },
+    {
+      "step": 4,
+      "operation": "output_decode",
+      "formula": "identity"
+    }
+  ],
+  "s3b": {
+    "gray_axis_relaxed": false,
+    "photo_model_references": "data/derived-s3b/ektachrome100/photo-model-references.json",
+    "candidate_provenance": "data/derived-s3b/ektachrome100/w50-provenance.json"
+  }
+}

@@ -1,0 +1,198 @@
+{
+  "name": "pro400h S3b",
+  "version": "lut2",
+  "source_model": {
+    "version": "s3",
+    "class": "tools.model_s3.S3Pipeline('pro400h')",
+    "form": "M4s",
+    "input_method": "Burns2020",
+    "configuration": {
+      "white_mode": "W1",
+      "operator": {
+        "form": "O2",
+        "k": 0.5216820961181742,
+        "w": 0.712683715580258
+      },
+      "print_mode": "P0"
+    },
+    "film": "fujifilm_pro_400h",
+    "print": "fujifilm_crystal_archive_typeii",
+    "parameters_path": "data/derived-s3b/pro400h/fit-M4s.json",
+    "parameters_sha256": "645480e55670a376a80e76d8fd26c013511395dcb62faf7683aebbbe542051b7",
+    "model_path": "tools/model_s3.py",
+    "model_sha256": "974d310bc9006515010dc0ddfa973a8f9ae600ae5f775ee9cc07daf979d60059",
+    "stock_adapter_sha256": "f2681b8a5204a75ce099c5ab78988dcd2d63206e956921fccbfa36d513f957d1",
+    "table_sha256": "381fdd483b3284c1d6fc526add71f75678e66e806337002dae7ac7a72b109a07",
+    "profiles": {
+      "fujifilm_pro_400h.json": "da1be731ab79fb5535c43042494fa7298c942179abb68270b928aa012c629b31",
+      "fujifilm_crystal_archive_typeii.json": "0db98e5b8e2ed5248696e62bc39b7f21459a8812d64049b1275d7be995af873b"
+    }
+  },
+  "input": {
+    "color_space": "scene-linear ProPhoto RGB (ROMM primaries), D50",
+    "middle_gray": 0.18,
+    "encoding": "e = clip((log2(max(v, 0.18*2^lo)/0.18)-lo)/(hi-lo), 0, 1)",
+    "lo": -9.0,
+    "hi": 8.0,
+    "v_lo": 0.0003515625,
+    "v_hi": 46.08,
+    "clamping": "per channel: v<=v_lo (including zero/negative) maps to 0; v>=v_hi maps to 1",
+    "grid": "s_i=i/(n-1); e_i=P_w^-1(s_i), inverse of the 1024-point linear-interpolated table; v_i=0.18*2^(-9+17*e_i)"
+  },
+  "output": {
+    "color_space": "linear ProPhoto RGB (ROMM primaries), D50",
+    "display_referred": true,
+    "clipped": false,
+    "range_min_RGB": [
+      0.0032401257194578648,
+      0.004023981746286154,
+      0.005233069881796837
+    ],
+    "range_max_RGB": [
+      0.7175711393356323,
+      0.6979914903640747,
+      0.7613871693611145
+    ]
+  },
+  "size": 65,
+  "interpolation": "tetrahedral",
+  "storage": {
+    "shape": [
+      65,
+      65,
+      65,
+      3
+    ],
+    "axis_order": [
+      "b",
+      "g",
+      "r",
+      "channel"
+    ],
+    "channel_order": [
+      "R",
+      "G",
+      "B"
+    ],
+    "endianness": "little",
+    "fastest_grid_axis": "R"
+  },
+  "data_files": {
+    "f32": {
+      "name": "pro400h-cube65.f32",
+      "sha256": "099509654b8d6b32f1bdc7beab3d8a623da4ffaa55f194ae2d2684053c5c1d48",
+      "bytes": 3295500
+    },
+    "f16": {
+      "name": "pro400h-cube65.f16",
+      "sha256": "b3f8c610a404b6b77ad4130bfbdee2a94a1d08a5718c7b98f2bf4e56b404e468",
+      "bytes": 1647750
+    },
+    "cube": {
+      "name": "pro400h-cube65.cube",
+      "sha256": "08486968c1b16338809042aa9c3c5490bdd296c09b01cc7f31609ff9be7a1f32",
+      "bytes": 10269322
+    },
+    "shaper_f32": {
+      "name": "pro400h-shaper1024.f32",
+      "sha256": "428618aebd162f5d7babe2783aaa7d2da7bf01c5cad2dca2e76c7ffc087ec9cd",
+      "bytes": 4096
+    },
+    "changelog": {
+      "name": "pro400h-CHANGELOG.txt",
+      "sha256": "5eeb6e29479197a02bb2112dd0560bf7fe8b8f016dd6ae0d904d42a09be440f4",
+      "bytes": 3200
+    },
+    "license": {
+      "name": "SPEKTRAFILM_LICENSE.txt",
+      "sha256": "76d629501783ae52e8d63aee1e054c1e1a9713b9fe7d36fb306e25b1d14b24e9",
+      "bytes": 23677
+    }
+  },
+  "license": "CC BY-SA 4.0",
+  "attribution": "Derived from spektrafilm by Andrea Volpato, https://github.com/andreavolpato/spektrafilm",
+  "error_on_frozen_model": {
+    "budget_values": {
+      "median": 0.03772392681712142,
+      "p99": 0.20147619153131474,
+      "p99_9": 0.3133962722390517,
+      "chart_max": 0.8799139748005299,
+      "neutral_max": 0.1611692061843975
+    },
+    "delivered_f16_budget_values": {
+      "median": 0.03772392681712142,
+      "p99": 0.20147619153131474,
+      "p99_9": 0.3133962722390517,
+      "chart_max": 0.8799139748005299,
+      "neutral_max": 0.1611692061843975
+    },
+    "budgets": {
+      "median": 0.2,
+      "p99": 0.5,
+      "p99_9": 1.0,
+      "chart_max": 1.0,
+      "neutral_max": 0.3
+    },
+    "metric": "D50 CIEDE2000, unclipped outputs before TIFF",
+    "evaluated_photos": 7,
+    "interpolation": "tetrahedral",
+    "qualification_precision": "f16"
+  },
+  "output_encoding": {
+    "name": "linear",
+    "forward": "identity",
+    "inverse": "identity",
+    "stored_range_min_RGB": [
+      0.0032401257194578648,
+      0.004023981746286154,
+      0.005233069881796837
+    ],
+    "stored_range_max_RGB": [
+      0.7175711393356323,
+      0.6979914903640747,
+      0.7613871693611145
+    ],
+    "negative_values": "linear branch, no clipping"
+  },
+  "shaper": {
+    "w": 0.5,
+    "K": 1024,
+    "sample_domain": "e_k=k/1023",
+    "interpolation": "linear",
+    "file": "pro400h-shaper1024.f32",
+    "sha256": "428618aebd162f5d7babe2783aaa7d2da7bf01c5cad2dca2e76c7ffc087ec9cd",
+    "dtype": "little-endian float32",
+    "generation_points": 4097,
+    "density": "w*abs(np.gradient(N,e))/mean(abs(np.gradient(N,e)))+(1-w)",
+    "integration": "trapezoidal, then normalize to [0,1]",
+    "bake_precision": "1024-point float64 table",
+    "serialization_validation": "data/derived-s3b/pro400h/lut-delivery.json"
+  },
+  "path": [
+    {
+      "step": 1,
+      "operation": "log_encode",
+      "formula": "e = clip((log2(max(v, 0.18*2^lo)/0.18)-lo)/(hi-lo), 0, 1)"
+    },
+    {
+      "step": 2,
+      "operation": "shaper",
+      "formula": "s=P_w(e), linear interpolation of 1024 scalar samples per channel"
+    },
+    {
+      "step": 3,
+      "operation": "cube",
+      "formula": "q=tetrahedral(cube,s)"
+    },
+    {
+      "step": 4,
+      "operation": "output_decode",
+      "formula": "identity"
+    }
+  ],
+  "s3b": {
+    "gray_axis_relaxed": false,
+    "photo_model_references": "data/derived-s3b/pro400h/photo-model-references.json",
+    "candidate_provenance": "data/derived-s3b/pro400h/w50-provenance.json"
+  }
+}

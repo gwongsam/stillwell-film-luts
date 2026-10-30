@@ -1,0 +1,21 @@
+2026-10-29 — S3 cine5203
+Derived from spektrafilm by Andrea Volpato, https://github.com/andreavolpato/spektrafilm
+License: CC BY-SA 4.0. Original profiles kodak_vision3_50d.json, kodak_2383.json were not modified.
+Source copies: data/spektrafilm/; upstream commit 3bb2c2d2801ff68b92019cf1dbcbb133d60832bc.
+Derivative path: original profiles -> unchanged S1 Burns projection tables and midscale anchors -> fixed M4s model -> one 11-parameter fit to this stock's black-box reference -> direct 65^3 node bake -> this package.
+Declared paper and unchanged film data. Negatives: S2 final W1/P0 with frozen O2 and LAD .75/.75/.75; S2 D55/W1 Viewer for 2383, D50 StockViewer for still-photo papers. Reversal: V4 FixedWhiteViewer, unfiltered D50 white, no print stage and no output compressor. Configuration is recorded below. No spatial processing or dye double pass.
+Parameters: data/derived-s3/cine5203/fit-M4s.json. Input model Burns2020 and M4s couplers are unchanged from v5.
+LUT2 configuration: 65^3, w=0.25, 1024-point shaper, linear output, trilinear interpolation; log2 middle-gray-relative -9..+8 EV encoding. Neutral 4097-point L* derivative, normalized trapezoidal integration, linear resampling to 1024 points. No table smoothing or repair.
+Output is rounded to little-endian float32 in B,G,R,channel order (R fastest); float16 is IEEE binary16 rounding of float32; text .cube uses nine significant digits. Shaper is little-endian float32. Both complete delivered paths are evaluated against unquantized model output on all seven photos and fixed probes.
+
+S3 actual selected switches: {"white_mode": "W1", "operator": {"form": "O2", "k": 0.5216820961181742, "w": 0.712683715580258}, "print_mode": "P0"}
+Gates (a / b / c-prime): {"gates": {"a": {"value": 2.634482486525605, "limit": 6, "passed": true}, "b": {"value": 2.2345225649179987, "limit": 3, "failed_rows": [], "passed": true}, "c_prime": {"value": 0.5841154896368117, "limit": 1.5, "passed": true}}, "passed": true, "c_report_only": {"IMG_2694": {"ours_C": 18.83227633138391, "reference_C": 20.822912812647115, "old_gate_pass": true}, "IMG_5517": {"ours_C": 30.669910295171615, "reference_C": 34.482457496144264, "old_gate_pass": false}}}
+Gray-axis allowance: 0.45 (original 0.30); relaxation used: True. Other budgets unchanged.
+
+2026-10-30 — S3b (supersedes historical interpolation/selection/budget statements above)
+Interpolation: tetrahedral / 四面体; App engine contract effective 2026-10-30 (App implementation owned by reviewer).
+Selected weight: 0.5. Selection: w=0.5 first; otherwise minimum passing f16 p99.9 among 0.25/0.75.
+Budgets (tetrahedral, serialized f16 cube + f32 shaper): {"median": 0.03896345132951113, "p99": 0.17621686956168398, "p99_9": 0.2615760317996363, "chart_max": 0.8599057810018791, "neutral_max": 0.1311588861010098}
+Limits: {"median": 0.2, "p99": 0.5, "p99_9": 1.0, "chart_max": 1.0, "neutral_max": 0.3}. Gray-axis relaxation used: False.
+Previously baked tables and shapers copied byte for byte with SHA-256 verification; no rebake except new Verita model or previously missing weights.
+Photo model references and SHA: data/derived-s3b/cine5203/photo-model-references.json

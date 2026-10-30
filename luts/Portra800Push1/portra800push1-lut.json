@@ -1,0 +1,198 @@
+{
+  "name": "portra800push1 S3b",
+  "version": "lut2",
+  "source_model": {
+    "version": "s3",
+    "class": "tools.model_s3.S3Pipeline('portra800push1')",
+    "form": "M4s",
+    "input_method": "Burns2020",
+    "configuration": {
+      "white_mode": "W1",
+      "operator": {
+        "form": "O2",
+        "k": 0.5216820961181742,
+        "w": 0.712683715580258
+      },
+      "print_mode": "P0"
+    },
+    "film": "kodak_portra_800_push1",
+    "print": "kodak_portra_endura",
+    "parameters_path": "data/derived-s3b/portra800push1/fit-M4s.json",
+    "parameters_sha256": "e6bf804ba4597eecf8a3822fea9745cfdc07f4e7bd4859729002e6ed50d4626e",
+    "model_path": "tools/model_s3.py",
+    "model_sha256": "974d310bc9006515010dc0ddfa973a8f9ae600ae5f775ee9cc07daf979d60059",
+    "stock_adapter_sha256": "f2681b8a5204a75ce099c5ab78988dcd2d63206e956921fccbfa36d513f957d1",
+    "table_sha256": "32acbfef76210657067510a2160717be316e49f0bc4e99f05ab4866dbfa9f209",
+    "profiles": {
+      "kodak_portra_800_push1.json": "dac9cbcd2442442d9dee90bd2d6a28dcc4b996635dcac0b44ac8ecd32c4b3a4f",
+      "kodak_portra_endura.json": "e3bb6069e02d088d8080d38ce28035816038f62786e2aff9176bf4aeeb4820a0"
+    }
+  },
+  "input": {
+    "color_space": "scene-linear ProPhoto RGB (ROMM primaries), D50",
+    "middle_gray": 0.18,
+    "encoding": "e = clip((log2(max(v, 0.18*2^lo)/0.18)-lo)/(hi-lo), 0, 1)",
+    "lo": -9.0,
+    "hi": 8.0,
+    "v_lo": 0.0003515625,
+    "v_hi": 46.08,
+    "clamping": "per channel: v<=v_lo (including zero/negative) maps to 0; v>=v_hi maps to 1",
+    "grid": "s_i=i/(n-1); e_i=P_w^-1(s_i), inverse of the 1024-point linear-interpolated table; v_i=0.18*2^(-9+17*e_i)"
+  },
+  "output": {
+    "color_space": "linear ProPhoto RGB (ROMM primaries), D50",
+    "display_referred": true,
+    "clipped": false,
+    "range_min_RGB": [
+      0.004320630803704262,
+      0.004261390306055546,
+      0.005443287082016468
+    ],
+    "range_max_RGB": [
+      0.6912031173706055,
+      0.6813721656799316,
+      0.71056067943573
+    ]
+  },
+  "size": 65,
+  "interpolation": "tetrahedral",
+  "storage": {
+    "shape": [
+      65,
+      65,
+      65,
+      3
+    ],
+    "axis_order": [
+      "b",
+      "g",
+      "r",
+      "channel"
+    ],
+    "channel_order": [
+      "R",
+      "G",
+      "B"
+    ],
+    "endianness": "little",
+    "fastest_grid_axis": "R"
+  },
+  "data_files": {
+    "f32": {
+      "name": "portra800push1-cube65.f32",
+      "sha256": "b1b2e1e5b70fbd55f290aac8618d641752bf2cb87c365bff3b162d8217bae9f1",
+      "bytes": 3295500
+    },
+    "f16": {
+      "name": "portra800push1-cube65.f16",
+      "sha256": "ff48583453439a86b7f643e4aa1470111a8701bd9ab12c23ec8e074b58d07da6",
+      "bytes": 1647750
+    },
+    "cube": {
+      "name": "portra800push1-cube65.cube",
+      "sha256": "077a14fd4922ddf18f6b3a292e1f240d262d29c494111315651b81cd61ebad97",
+      "bytes": 10221804
+    },
+    "shaper_f32": {
+      "name": "portra800push1-shaper1024.f32",
+      "sha256": "701f374c2085fad73ae97645f38799044c86762a0feb8b589d8f3d44bdb37a16",
+      "bytes": 4096
+    },
+    "changelog": {
+      "name": "portra800push1-CHANGELOG.txt",
+      "sha256": "eb4b6685bf4cecd0efd16bbd13c5b75bd2ae9ed594a4c7a06a9d78de0fb29499",
+      "bytes": 3212
+    },
+    "license": {
+      "name": "SPEKTRAFILM_LICENSE.txt",
+      "sha256": "76d629501783ae52e8d63aee1e054c1e1a9713b9fe7d36fb306e25b1d14b24e9",
+      "bytes": 23677
+    }
+  },
+  "license": "CC BY-SA 4.0",
+  "attribution": "Derived from spektrafilm by Andrea Volpato, https://github.com/andreavolpato/spektrafilm",
+  "error_on_frozen_model": {
+    "budget_values": {
+      "median": 0.04521545659652384,
+      "p99": 0.31868734559526896,
+      "p99_9": 0.47498410690590254,
+      "chart_max": 0.97353549524695,
+      "neutral_max": 0.15990504404056763
+    },
+    "delivered_f16_budget_values": {
+      "median": 0.04521545659652384,
+      "p99": 0.31868734559526896,
+      "p99_9": 0.47498410690590254,
+      "chart_max": 0.97353549524695,
+      "neutral_max": 0.15990504404056763
+    },
+    "budgets": {
+      "median": 0.2,
+      "p99": 0.5,
+      "p99_9": 1.0,
+      "chart_max": 1.0,
+      "neutral_max": 0.3
+    },
+    "metric": "D50 CIEDE2000, unclipped outputs before TIFF",
+    "evaluated_photos": 7,
+    "interpolation": "tetrahedral",
+    "qualification_precision": "f16"
+  },
+  "output_encoding": {
+    "name": "linear",
+    "forward": "identity",
+    "inverse": "identity",
+    "stored_range_min_RGB": [
+      0.004320630803704262,
+      0.004261390306055546,
+      0.005443287082016468
+    ],
+    "stored_range_max_RGB": [
+      0.6912031173706055,
+      0.6813721656799316,
+      0.71056067943573
+    ],
+    "negative_values": "linear branch, no clipping"
+  },
+  "shaper": {
+    "w": 0.5,
+    "K": 1024,
+    "sample_domain": "e_k=k/1023",
+    "interpolation": "linear",
+    "file": "portra800push1-shaper1024.f32",
+    "sha256": "701f374c2085fad73ae97645f38799044c86762a0feb8b589d8f3d44bdb37a16",
+    "dtype": "little-endian float32",
+    "generation_points": 4097,
+    "density": "w*abs(np.gradient(N,e))/mean(abs(np.gradient(N,e)))+(1-w)",
+    "integration": "trapezoidal, then normalize to [0,1]",
+    "bake_precision": "1024-point float64 table",
+    "serialization_validation": "data/derived-s3b/portra800push1/lut-delivery.json"
+  },
+  "path": [
+    {
+      "step": 1,
+      "operation": "log_encode",
+      "formula": "e = clip((log2(max(v, 0.18*2^lo)/0.18)-lo)/(hi-lo), 0, 1)"
+    },
+    {
+      "step": 2,
+      "operation": "shaper",
+      "formula": "s=P_w(e), linear interpolation of 1024 scalar samples per channel"
+    },
+    {
+      "step": 3,
+      "operation": "cube",
+      "formula": "q=tetrahedral(cube,s)"
+    },
+    {
+      "step": 4,
+      "operation": "output_decode",
+      "formula": "identity"
+    }
+  ],
+  "s3b": {
+    "gray_axis_relaxed": false,
+    "photo_model_references": "data/derived-s3b/portra800push1/photo-model-references.json",
+    "candidate_provenance": "data/derived-s3b/portra800push1/w50-provenance.json"
+  }
+}

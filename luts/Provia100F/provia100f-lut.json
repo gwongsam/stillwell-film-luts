@@ -1,0 +1,194 @@
+{
+  "name": "provia100f S3b",
+  "version": "lut2",
+  "source_model": {
+    "version": "s3",
+    "class": "tools.model_s3.S3Pipeline('provia100f')",
+    "form": "M4s",
+    "input_method": "Burns2020",
+    "configuration": {
+      "white_mode": "W1",
+      "operator": null,
+      "print_mode": "P0",
+      "view_mode": "V4"
+    },
+    "film": "fujifilm_provia_100f",
+    "print": null,
+    "parameters_path": "data/derived-s3/provia100f/fit-M4s.json",
+    "parameters_sha256": "4df8915f5735cd17fbd3fec4639bf902429f78f681ad32d1bf4234ca76d8538d",
+    "model_path": "tools/model_s3.py",
+    "model_sha256": "974d310bc9006515010dc0ddfa973a8f9ae600ae5f775ee9cc07daf979d60059",
+    "stock_adapter_sha256": "f2681b8a5204a75ce099c5ab78988dcd2d63206e956921fccbfa36d513f957d1",
+    "table_sha256": "dc007f9b45c4c0078b264dda410e65cf3135b370302b8f2613df32fb21a95023",
+    "profiles": {
+      "fujifilm_provia_100f.json": "f061f7aa55e3fefe1c89ee2edb8555a2d44fe8167d02f663c787067d131137b6"
+    }
+  },
+  "input": {
+    "color_space": "scene-linear ProPhoto RGB (ROMM primaries), D50",
+    "middle_gray": 0.18,
+    "encoding": "e = clip((log2(max(v, 0.18*2^lo)/0.18)-lo)/(hi-lo), 0, 1)",
+    "lo": -9.0,
+    "hi": 8.0,
+    "v_lo": 0.0003515625,
+    "v_hi": 46.08,
+    "clamping": "per channel: v<=v_lo (including zero/negative) maps to 0; v>=v_hi maps to 1",
+    "grid": "s_i=i/(n-1); e_i=P_w^-1(s_i), inverse of the 1024-point linear-interpolated table; v_i=0.18*2^(-9+17*e_i)"
+  },
+  "output": {
+    "color_space": "linear ProPhoto RGB (ROMM primaries), D50",
+    "display_referred": true,
+    "clipped": false,
+    "range_min_RGB": [
+      0.000594250566791743,
+      0.0005386744742281735,
+      0.000656155520118773
+    ],
+    "range_max_RGB": [
+      0.7271900773048401,
+      0.7242692112922668,
+      0.7197076678276062
+    ]
+  },
+  "size": 65,
+  "interpolation": "tetrahedral",
+  "storage": {
+    "shape": [
+      65,
+      65,
+      65,
+      3
+    ],
+    "axis_order": [
+      "b",
+      "g",
+      "r",
+      "channel"
+    ],
+    "channel_order": [
+      "R",
+      "G",
+      "B"
+    ],
+    "endianness": "little",
+    "fastest_grid_axis": "R"
+  },
+  "data_files": {
+    "f32": {
+      "name": "provia100f-cube65.f32",
+      "sha256": "0c9431b5791764b7aea1566bc0c56f8b95cf55cb4b9b8915c4d73895659d2a54",
+      "bytes": 3295500
+    },
+    "f16": {
+      "name": "provia100f-cube65.f16",
+      "sha256": "50255941ea183b8b6d15c45ceedd7689e2acc696d71204a16a3a7ddfea7ee23c",
+      "bytes": 1647750
+    },
+    "cube": {
+      "name": "provia100f-cube65.cube",
+      "sha256": "3abcd05382eae582cea975abd1e5a10671fedc6452635e55d563ab052579372a",
+      "bytes": 10335464
+    },
+    "shaper_f32": {
+      "name": "provia100f-shaper1024.f32",
+      "sha256": "52045e64a5a4f6c09eb7cf4c343a8707284d32b3a4b95b9dc87680d48bbe9211",
+      "bytes": 4096
+    },
+    "changelog": {
+      "name": "provia100f-CHANGELOG.txt",
+      "sha256": "18a8bfd19d920593ff9d7605ba43a2787616125e1f44bbbf4e14ba0e0dfc5fef",
+      "bytes": 3135
+    },
+    "license": {
+      "name": "SPEKTRAFILM_LICENSE.txt",
+      "sha256": "76d629501783ae52e8d63aee1e054c1e1a9713b9fe7d36fb306e25b1d14b24e9",
+      "bytes": 23677
+    }
+  },
+  "license": "CC BY-SA 4.0",
+  "attribution": "Derived from spektrafilm by Andrea Volpato, https://github.com/andreavolpato/spektrafilm",
+  "error_on_frozen_model": {
+    "budget_values": {
+      "median": 0.02956954662980574,
+      "p99": 0.13121173669238345,
+      "p99_9": 0.2018873635513253,
+      "chart_max": 0.43410197835982234,
+      "neutral_max": 0.15816860054493492
+    },
+    "delivered_f16_budget_values": {
+      "median": 0.02956954662980574,
+      "p99": 0.13121173669238345,
+      "p99_9": 0.2018873635513253,
+      "chart_max": 0.43410197835982234,
+      "neutral_max": 0.15816860054493492
+    },
+    "budgets": {
+      "median": 0.2,
+      "p99": 0.5,
+      "p99_9": 1.0,
+      "chart_max": 1.0,
+      "neutral_max": 0.3
+    },
+    "metric": "D50 CIEDE2000, unclipped outputs before TIFF",
+    "evaluated_photos": 7,
+    "interpolation": "tetrahedral",
+    "qualification_precision": "f16"
+  },
+  "output_encoding": {
+    "name": "linear",
+    "forward": "identity",
+    "inverse": "identity",
+    "stored_range_min_RGB": [
+      0.000594250566791743,
+      0.0005386744742281735,
+      0.000656155520118773
+    ],
+    "stored_range_max_RGB": [
+      0.7271900773048401,
+      0.7242692112922668,
+      0.7197076678276062
+    ],
+    "negative_values": "linear branch, no clipping"
+  },
+  "shaper": {
+    "w": 0.5,
+    "K": 1024,
+    "sample_domain": "e_k=k/1023",
+    "interpolation": "linear",
+    "file": "provia100f-shaper1024.f32",
+    "sha256": "52045e64a5a4f6c09eb7cf4c343a8707284d32b3a4b95b9dc87680d48bbe9211",
+    "dtype": "little-endian float32",
+    "generation_points": 4097,
+    "density": "w*abs(np.gradient(N,e))/mean(abs(np.gradient(N,e)))+(1-w)",
+    "integration": "trapezoidal, then normalize to [0,1]",
+    "bake_precision": "1024-point float64 table",
+    "serialization_validation": "data/derived-s3b/provia100f/lut-delivery.json"
+  },
+  "path": [
+    {
+      "step": 1,
+      "operation": "log_encode",
+      "formula": "e = clip((log2(max(v, 0.18*2^lo)/0.18)-lo)/(hi-lo), 0, 1)"
+    },
+    {
+      "step": 2,
+      "operation": "shaper",
+      "formula": "s=P_w(e), linear interpolation of 1024 scalar samples per channel"
+    },
+    {
+      "step": 3,
+      "operation": "cube",
+      "formula": "q=tetrahedral(cube,s)"
+    },
+    {
+      "step": 4,
+      "operation": "output_decode",
+      "formula": "identity"
+    }
+  ],
+  "s3b": {
+    "gray_axis_relaxed": false,
+    "photo_model_references": "data/derived-s3b/provia100f/photo-model-references.json",
+    "candidate_provenance": "data/derived-s3b/provia100f/w50-provenance.json"
+  }
+}

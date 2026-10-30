@@ -1,0 +1,198 @@
+{
+  "name": "portra160 S3b",
+  "version": "lut2",
+  "source_model": {
+    "version": "s3",
+    "class": "tools.model_s3.S3Pipeline('portra160')",
+    "form": "M4s",
+    "input_method": "Burns2020",
+    "configuration": {
+      "white_mode": "W1",
+      "operator": {
+        "form": "O2",
+        "k": 0.5216820961181742,
+        "w": 0.712683715580258
+      },
+      "print_mode": "P0"
+    },
+    "film": "kodak_portra_160",
+    "print": "kodak_portra_endura",
+    "parameters_path": "data/derived-s3/portra160/fit-M4s.json",
+    "parameters_sha256": "16e756cd57d51933f7597b539d685a9ace600b678eb0fe653d079a4ae87a30c4",
+    "model_path": "tools/model_s3.py",
+    "model_sha256": "974d310bc9006515010dc0ddfa973a8f9ae600ae5f775ee9cc07daf979d60059",
+    "stock_adapter_sha256": "f2681b8a5204a75ce099c5ab78988dcd2d63206e956921fccbfa36d513f957d1",
+    "table_sha256": "16e01c90dd8539ef73f9e1f88fd8a8921b79126a67df1ffc7db79ff6d4b6a512",
+    "profiles": {
+      "kodak_portra_160.json": "1bc9b65a6940f3a4381e8d14d0ac43594aff9495051992ce4d7408e761549992",
+      "kodak_portra_endura.json": "e3bb6069e02d088d8080d38ce28035816038f62786e2aff9176bf4aeeb4820a0"
+    }
+  },
+  "input": {
+    "color_space": "scene-linear ProPhoto RGB (ROMM primaries), D50",
+    "middle_gray": 0.18,
+    "encoding": "e = clip((log2(max(v, 0.18*2^lo)/0.18)-lo)/(hi-lo), 0, 1)",
+    "lo": -9.0,
+    "hi": 8.0,
+    "v_lo": 0.0003515625,
+    "v_hi": 46.08,
+    "clamping": "per channel: v<=v_lo (including zero/negative) maps to 0; v>=v_hi maps to 1",
+    "grid": "s_i=i/(n-1); e_i=P_w^-1(s_i), inverse of the 1024-point linear-interpolated table; v_i=0.18*2^(-9+17*e_i)"
+  },
+  "output": {
+    "color_space": "linear ProPhoto RGB (ROMM primaries), D50",
+    "display_referred": true,
+    "clipped": false,
+    "range_min_RGB": [
+      0.004343407694250345,
+      0.004300632979720831,
+      0.005294477101415396
+    ],
+    "range_max_RGB": [
+      0.7079809904098511,
+      0.6906336545944214,
+      0.7361178994178772
+    ]
+  },
+  "size": 65,
+  "interpolation": "tetrahedral",
+  "storage": {
+    "shape": [
+      65,
+      65,
+      65,
+      3
+    ],
+    "axis_order": [
+      "b",
+      "g",
+      "r",
+      "channel"
+    ],
+    "channel_order": [
+      "R",
+      "G",
+      "B"
+    ],
+    "endianness": "little",
+    "fastest_grid_axis": "R"
+  },
+  "data_files": {
+    "f32": {
+      "name": "portra160-cube65.f32",
+      "sha256": "c53e675f290396dbf4ad6143bd325a486462265072bd47ecc93a35346172d9a7",
+      "bytes": 3295500
+    },
+    "f16": {
+      "name": "portra160-cube65.f16",
+      "sha256": "ea657add301e9d8131b39e958544144e1e0308757037920453f895e414d0edb9",
+      "bytes": 1647750
+    },
+    "cube": {
+      "name": "portra160-cube65.cube",
+      "sha256": "ae5689bdf9141b2b21b34bc4630e58ac92f5724820fd5d1912925722c0402076",
+      "bytes": 10190617
+    },
+    "shaper_f32": {
+      "name": "portra160-shaper1024.f32",
+      "sha256": "d25dd5834fee67bfe59d157e94e8a60047ce60ddaac6ffc575efe3bd3988fcff",
+      "bytes": 4096
+    },
+    "changelog": {
+      "name": "portra160-CHANGELOG.txt",
+      "sha256": "dbc7e8fc4dfaed9ddcdc85616b46d137e77f32a289b93bac1364f2580b3afffc",
+      "bytes": 3128
+    },
+    "license": {
+      "name": "SPEKTRAFILM_LICENSE.txt",
+      "sha256": "76d629501783ae52e8d63aee1e054c1e1a9713b9fe7d36fb306e25b1d14b24e9",
+      "bytes": 23677
+    }
+  },
+  "license": "CC BY-SA 4.0",
+  "attribution": "Derived from spektrafilm by Andrea Volpato, https://github.com/andreavolpato/spektrafilm",
+  "error_on_frozen_model": {
+    "budget_values": {
+      "median": 0.03805793411663175,
+      "p99": 0.15617553431595027,
+      "p99_9": 0.2181642713068628,
+      "chart_max": 0.3955492072128261,
+      "neutral_max": 0.10381534927397361
+    },
+    "delivered_f16_budget_values": {
+      "median": 0.03805793411663175,
+      "p99": 0.15617553431595027,
+      "p99_9": 0.2181642713068628,
+      "chart_max": 0.3955492072128261,
+      "neutral_max": 0.10381534927397361
+    },
+    "budgets": {
+      "median": 0.2,
+      "p99": 0.5,
+      "p99_9": 1.0,
+      "chart_max": 1.0,
+      "neutral_max": 0.3
+    },
+    "metric": "D50 CIEDE2000, unclipped outputs before TIFF",
+    "evaluated_photos": 7,
+    "interpolation": "tetrahedral",
+    "qualification_precision": "f16"
+  },
+  "output_encoding": {
+    "name": "linear",
+    "forward": "identity",
+    "inverse": "identity",
+    "stored_range_min_RGB": [
+      0.004343407694250345,
+      0.004300632979720831,
+      0.005294477101415396
+    ],
+    "stored_range_max_RGB": [
+      0.7079809904098511,
+      0.6906336545944214,
+      0.7361178994178772
+    ],
+    "negative_values": "linear branch, no clipping"
+  },
+  "shaper": {
+    "w": 0.5,
+    "K": 1024,
+    "sample_domain": "e_k=k/1023",
+    "interpolation": "linear",
+    "file": "portra160-shaper1024.f32",
+    "sha256": "d25dd5834fee67bfe59d157e94e8a60047ce60ddaac6ffc575efe3bd3988fcff",
+    "dtype": "little-endian float32",
+    "generation_points": 4097,
+    "density": "w*abs(np.gradient(N,e))/mean(abs(np.gradient(N,e)))+(1-w)",
+    "integration": "trapezoidal, then normalize to [0,1]",
+    "bake_precision": "1024-point float64 table",
+    "serialization_validation": "data/derived-s3b/portra160/lut-delivery.json"
+  },
+  "path": [
+    {
+      "step": 1,
+      "operation": "log_encode",
+      "formula": "e = clip((log2(max(v, 0.18*2^lo)/0.18)-lo)/(hi-lo), 0, 1)"
+    },
+    {
+      "step": 2,
+      "operation": "shaper",
+      "formula": "s=P_w(e), linear interpolation of 1024 scalar samples per channel"
+    },
+    {
+      "step": 3,
+      "operation": "cube",
+      "formula": "q=tetrahedral(cube,s)"
+    },
+    {
+      "step": 4,
+      "operation": "output_decode",
+      "formula": "identity"
+    }
+  ],
+  "s3b": {
+    "gray_axis_relaxed": false,
+    "photo_model_references": "data/derived-s3b/portra160/photo-model-references.json",
+    "candidate_provenance": "data/derived-s3b/portra160/w50-provenance.json"
+  }
+}

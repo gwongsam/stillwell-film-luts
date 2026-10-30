@@ -1,0 +1,205 @@
+{
+  "name": "cine5203 S3b",
+  "version": "lut2",
+  "source_model": {
+    "version": "s3",
+    "class": "tools.s3_models.S3MotionPipeline('cine5203')",
+    "form": "M4s",
+    "input_method": "Burns2020",
+    "configuration": {
+      "white_mode": "W1",
+      "operator": {
+        "form": "O2",
+        "k": 0.5216820961181742,
+        "w": 0.712683715580258
+      },
+      "print_mode": "P0"
+    },
+    "film": "kodak_vision3_50d",
+    "print": "kodak_2383",
+    "parameters_path": "data/derived-s3/cine5203/fit-M4s.json",
+    "parameters_sha256": "987af9164d8979cc90032416e0c90c318b473f3ce2971a9b6209d4edbb6dc7ad",
+    "model_path": "tools/s3_models.py",
+    "model_sha256": "0fb823c54504e7edcc95cd36d610b40e703cfd5bbd47360a53aeb88f6a4a95b1",
+    "stock_adapter_sha256": "f2681b8a5204a75ce099c5ab78988dcd2d63206e956921fccbfa36d513f957d1",
+    "table_sha256": "c37dc69175bae41f68f05578e510503b48a23918597cc0425894584fa892a5c8",
+    "profiles": {
+      "kodak_vision3_50d.json": "fd426abc9de911682080db222020978dee4e8df7ca939bfcd5c9d0f6df249fa1",
+      "kodak_2383.json": "eb7fdfa3b75a909bf5c400802f7401160c8017ed1ac3e8e0d1c8448d56fbe184"
+    },
+    "viewing_illuminant": "D55 proxy",
+    "profile_viewing_illuminant": "K75P",
+    "viewer_class": "proto.viewing.Viewer(W1), same as S2 cine5207",
+    "base_model_path": "tools/model_s3.py",
+    "base_model_sha256": "974d310bc9006515010dc0ddfa973a8f9ae600ae5f775ee9cc07daf979d60059",
+    "viewer_path": "proto/viewing.py",
+    "viewer_sha256": "e0b4abcfa428055f75c8cf19bf42931c9d53fa49282ab46ff6dac74ddfa00b85"
+  },
+  "input": {
+    "color_space": "scene-linear ProPhoto RGB (ROMM primaries), D50",
+    "middle_gray": 0.18,
+    "encoding": "e = clip((log2(max(v, 0.18*2^lo)/0.18)-lo)/(hi-lo), 0, 1)",
+    "lo": -9.0,
+    "hi": 8.0,
+    "v_lo": 0.0003515625,
+    "v_hi": 46.08,
+    "clamping": "per channel: v<=v_lo (including zero/negative) maps to 0; v>=v_hi maps to 1",
+    "grid": "s_i=i/(n-1); e_i=P_w^-1(s_i), inverse of the 1024-point linear-interpolated table; v_i=0.18*2^(-9+17*e_i)"
+  },
+  "output": {
+    "color_space": "linear ProPhoto RGB (ROMM primaries), D50",
+    "display_referred": true,
+    "clipped": false,
+    "range_min_RGB": [
+      0.0006829075864516199,
+      0.0009221389191225171,
+      0.0008190992521122098
+    ],
+    "range_max_RGB": [
+      0.7550438642501831,
+      0.7165758013725281,
+      0.7241310477256775
+    ]
+  },
+  "size": 65,
+  "interpolation": "tetrahedral",
+  "storage": {
+    "shape": [
+      65,
+      65,
+      65,
+      3
+    ],
+    "axis_order": [
+      "b",
+      "g",
+      "r",
+      "channel"
+    ],
+    "channel_order": [
+      "R",
+      "G",
+      "B"
+    ],
+    "endianness": "little",
+    "fastest_grid_axis": "R"
+  },
+  "data_files": {
+    "f32": {
+      "name": "cine5203-cube65.f32",
+      "sha256": "2c7057e61e090680c819b3636c04a0b0cbfd881ba019235e60aecaae90fd8ee9",
+      "bytes": 3295500
+    },
+    "f16": {
+      "name": "cine5203-cube65.f16",
+      "sha256": "f154b2d959327932dcca69178c186856eb71242473b03de923c6c73677450124",
+      "bytes": 1647750
+    },
+    "cube": {
+      "name": "cine5203-cube65.cube",
+      "sha256": "804285ee6df97be83ede8cb9d972b87fdae904fee94cc1efc836b537561537b4",
+      "bytes": 10341406
+    },
+    "shaper_f32": {
+      "name": "cine5203-shaper1024.f32",
+      "sha256": "d32b0cffb01438ecaa0417513a07cdfce6eb2a3a4823a0ce5e7eaa33410cb31c",
+      "bytes": 4096
+    },
+    "changelog": {
+      "name": "cine5203-CHANGELOG.txt",
+      "sha256": "64a24b4d27aab61f2a49503feb3f05aefacbd3f7a9dae4f15ecd1d284e25c6d4",
+      "bytes": 3180
+    },
+    "license": {
+      "name": "SPEKTRAFILM_LICENSE.txt",
+      "sha256": "76d629501783ae52e8d63aee1e054c1e1a9713b9fe7d36fb306e25b1d14b24e9",
+      "bytes": 23677
+    }
+  },
+  "license": "CC BY-SA 4.0",
+  "attribution": "Derived from spektrafilm by Andrea Volpato, https://github.com/andreavolpato/spektrafilm",
+  "error_on_frozen_model": {
+    "budget_values": {
+      "median": 0.03896345132951113,
+      "p99": 0.17621686956168398,
+      "p99_9": 0.2615760317996363,
+      "chart_max": 0.8599057810018791,
+      "neutral_max": 0.1311588861010098
+    },
+    "delivered_f16_budget_values": {
+      "median": 0.03896345132951113,
+      "p99": 0.17621686956168398,
+      "p99_9": 0.2615760317996363,
+      "chart_max": 0.8599057810018791,
+      "neutral_max": 0.1311588861010098
+    },
+    "budgets": {
+      "median": 0.2,
+      "p99": 0.5,
+      "p99_9": 1.0,
+      "chart_max": 1.0,
+      "neutral_max": 0.3
+    },
+    "metric": "D50 CIEDE2000, unclipped outputs before TIFF",
+    "evaluated_photos": 7,
+    "interpolation": "tetrahedral",
+    "qualification_precision": "f16"
+  },
+  "output_encoding": {
+    "name": "linear",
+    "forward": "identity",
+    "inverse": "identity",
+    "stored_range_min_RGB": [
+      0.0006829075864516199,
+      0.0009221389191225171,
+      0.0008190992521122098
+    ],
+    "stored_range_max_RGB": [
+      0.7550438642501831,
+      0.7165758013725281,
+      0.7241310477256775
+    ],
+    "negative_values": "linear branch, no clipping"
+  },
+  "shaper": {
+    "w": 0.5,
+    "K": 1024,
+    "sample_domain": "e_k=k/1023",
+    "interpolation": "linear",
+    "file": "cine5203-shaper1024.f32",
+    "sha256": "d32b0cffb01438ecaa0417513a07cdfce6eb2a3a4823a0ce5e7eaa33410cb31c",
+    "dtype": "little-endian float32",
+    "generation_points": 4097,
+    "density": "w*abs(np.gradient(N,e))/mean(abs(np.gradient(N,e)))+(1-w)",
+    "integration": "trapezoidal, then normalize to [0,1]",
+    "bake_precision": "1024-point float64 table",
+    "serialization_validation": "data/derived-s3b/cine5203/lut-delivery.json"
+  },
+  "path": [
+    {
+      "step": 1,
+      "operation": "log_encode",
+      "formula": "e = clip((log2(max(v, 0.18*2^lo)/0.18)-lo)/(hi-lo), 0, 1)"
+    },
+    {
+      "step": 2,
+      "operation": "shaper",
+      "formula": "s=P_w(e), linear interpolation of 1024 scalar samples per channel"
+    },
+    {
+      "step": 3,
+      "operation": "cube",
+      "formula": "q=tetrahedral(cube,s)"
+    },
+    {
+      "step": 4,
+      "operation": "output_decode",
+      "formula": "identity"
+    }
+  ],
+  "s3b": {
+    "gray_axis_relaxed": false,
+    "photo_model_references": "data/derived-s3b/cine5203/photo-model-references.json",
+    "candidate_provenance": "data/derived-s3b/cine5203/w50-provenance.json"
+  }
+}

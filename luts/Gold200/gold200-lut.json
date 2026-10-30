@@ -1,0 +1,200 @@
+{
+  "name": "gold200 S3b",
+  "version": "lut2",
+  "source_model": {
+    "version": "s2",
+    "class": "tools.model_s2.S2Pipeline('gold200')",
+    "form": "M4s",
+    "input_method": "Burns2020",
+    "configuration": {
+      "white_mode": "W1",
+      "operator": {
+        "form": "O2",
+        "k": 0.5216820961181742,
+        "w": 0.712683715580258
+      },
+      "print_mode": "P0"
+    },
+    "film": "kodak_gold_200",
+    "print": "kodak_portra_endura",
+    "parameters_path": "data/derived-s2/gold200/fit-M4s.json",
+    "parameters_sha256": "43297898896bd628ff48d2a3e51561478ecaf3d61d710ec240a311dc7277c0e8",
+    "model_path": "tools/model_s2.py",
+    "model_sha256": "3be8a32ed7ce87b936d9f88652f93cff923098cc0cc7e40de6994de9d9dbf19a",
+    "stock_adapter_sha256": "f2681b8a5204a75ce099c5ab78988dcd2d63206e956921fccbfa36d513f957d1",
+    "table_sha256": "f57caf52c1514f5ed006773e51f08eb68445c147834617f0a5e22af126157659",
+    "profiles": {
+      "kodak_gold_200.json": "aa8a0c1c7851fface3752f968cdf6c6d74a26fc9756a4460d3155d2382506b7c",
+      "kodak_portra_endura.json": "e3bb6069e02d088d8080d38ce28035816038f62786e2aff9176bf4aeeb4820a0"
+    },
+    "loader": "tools.model_s2.get_model('gold200')",
+    "table_path": "data/derived-s1/gold200/table-Burns2020.npz"
+  },
+  "input": {
+    "color_space": "scene-linear ProPhoto RGB (ROMM primaries), D50",
+    "middle_gray": 0.18,
+    "encoding": "e = clip((log2(max(v, 0.18*2^lo)/0.18)-lo)/(hi-lo), 0, 1)",
+    "lo": -9.0,
+    "hi": 8.0,
+    "v_lo": 0.0003515625,
+    "v_hi": 46.08,
+    "clamping": "per channel: v<=v_lo (including zero/negative) maps to 0; v>=v_hi maps to 1",
+    "grid": "s_i=i/(n-1); e_i=P_w^-1(s_i), inverse of the 1024-point linear-interpolated table; v_i=0.18*2^(-9+17*e_i)"
+  },
+  "output": {
+    "color_space": "linear ProPhoto RGB (ROMM primaries), D50",
+    "display_referred": true,
+    "clipped": false,
+    "range_min_RGB": [
+      0.004599665757268667,
+      0.004419244360178709,
+      0.005469426512718201
+    ],
+    "range_max_RGB": [
+      0.7070322036743164,
+      0.6895956993103027,
+      0.7349010705947876
+    ]
+  },
+  "size": 65,
+  "interpolation": "tetrahedral",
+  "storage": {
+    "shape": [
+      65,
+      65,
+      65,
+      3
+    ],
+    "axis_order": [
+      "b",
+      "g",
+      "r",
+      "channel"
+    ],
+    "channel_order": [
+      "R",
+      "G",
+      "B"
+    ],
+    "endianness": "little",
+    "fastest_grid_axis": "R"
+  },
+  "data_files": {
+    "f32": {
+      "name": "gold200-cube65.f32",
+      "sha256": "f5ca58d91c4d778b20365a776b9db709c7b0a587293a3371a1adbeaa71389fcd",
+      "bytes": 3295500
+    },
+    "f16": {
+      "name": "gold200-cube65.f16",
+      "sha256": "6601ab38a9d48b00af878d3436bf25900efb321250259c91cfc06ae0de1aaaa6",
+      "bytes": 1647750
+    },
+    "cube": {
+      "name": "gold200-cube65.cube",
+      "sha256": "91d6915b9881aa6af43d276d24ac60a342f6eee031c9e5eba1e046ac7dabe435",
+      "bytes": 10195160
+    },
+    "shaper_f32": {
+      "name": "gold200-shaper1024.f32",
+      "sha256": "204b8548f1dd1f44cfa0a37f3205fd0a58bb72a0b3c6c0f432902469439028f6",
+      "bytes": 4096
+    },
+    "changelog": {
+      "name": "gold200-CHANGELOG.txt",
+      "sha256": "497ee15833e0d2b3c38da736b1a5875bcd93763ba929ff84e0655bf3083e6866",
+      "bytes": 3461
+    },
+    "license": {
+      "name": "SPEKTRAFILM_LICENSE.txt",
+      "sha256": "76d629501783ae52e8d63aee1e054c1e1a9713b9fe7d36fb306e25b1d14b24e9",
+      "bytes": 23677
+    }
+  },
+  "license": "CC BY-SA 4.0",
+  "attribution": "Derived from spektrafilm by Andrea Volpato, https://github.com/andreavolpato/spektrafilm",
+  "error_on_frozen_model": {
+    "budget_values": {
+      "median": 0.03942663298874641,
+      "p99": 0.1873216813862206,
+      "p99_9": 0.290479078998332,
+      "chart_max": 0.5720996148530794,
+      "neutral_max": 0.15882935682111027
+    },
+    "delivered_f16_budget_values": {
+      "median": 0.03942663298874641,
+      "p99": 0.1873216813862206,
+      "p99_9": 0.290479078998332,
+      "chart_max": 0.5720996148530794,
+      "neutral_max": 0.15882935682111027
+    },
+    "budgets": {
+      "median": 0.2,
+      "p99": 0.5,
+      "p99_9": 1.0,
+      "chart_max": 1.0,
+      "neutral_max": 0.3
+    },
+    "metric": "D50 CIEDE2000, unclipped outputs before TIFF",
+    "evaluated_photos": 7,
+    "interpolation": "tetrahedral",
+    "qualification_precision": "f16"
+  },
+  "output_encoding": {
+    "name": "linear",
+    "forward": "identity",
+    "inverse": "identity",
+    "stored_range_min_RGB": [
+      0.004599665757268667,
+      0.004419244360178709,
+      0.005469426512718201
+    ],
+    "stored_range_max_RGB": [
+      0.7070322036743164,
+      0.6895956993103027,
+      0.7349010705947876
+    ],
+    "negative_values": "linear branch, no clipping"
+  },
+  "shaper": {
+    "w": 0.5,
+    "K": 1024,
+    "sample_domain": "e_k=k/1023",
+    "interpolation": "linear",
+    "file": "gold200-shaper1024.f32",
+    "sha256": "204b8548f1dd1f44cfa0a37f3205fd0a58bb72a0b3c6c0f432902469439028f6",
+    "dtype": "little-endian float32",
+    "generation_points": 4097,
+    "density": "w*abs(np.gradient(N,e))/mean(abs(np.gradient(N,e)))+(1-w)",
+    "integration": "trapezoidal, then normalize to [0,1]",
+    "bake_precision": "1024-point float64 table",
+    "serialization_validation": "data/derived-s3b/gold200/lut-delivery.json"
+  },
+  "path": [
+    {
+      "step": 1,
+      "operation": "log_encode",
+      "formula": "e = clip((log2(max(v, 0.18*2^lo)/0.18)-lo)/(hi-lo), 0, 1)"
+    },
+    {
+      "step": 2,
+      "operation": "shaper",
+      "formula": "s=P_w(e), linear interpolation of 1024 scalar samples per channel"
+    },
+    {
+      "step": 3,
+      "operation": "cube",
+      "formula": "q=tetrahedral(cube,s)"
+    },
+    {
+      "step": 4,
+      "operation": "output_decode",
+      "formula": "identity"
+    }
+  ],
+  "s3b": {
+    "gray_axis_relaxed": false,
+    "photo_model_references": "data/derived-s3b/gold200/photo-model-references.json",
+    "candidate_provenance": "data/derived-s3b/gold200/w50-provenance.json"
+  }
+}

@@ -1,0 +1,198 @@
+{
+  "name": "c200 S3b",
+  "version": "lut2",
+  "source_model": {
+    "version": "s2",
+    "class": "tools.model_s2.S2Pipeline('c200')",
+    "form": "M4s",
+    "input_method": "Burns2020",
+    "configuration": {
+      "white_mode": "W1",
+      "operator": {
+        "form": "O2",
+        "k": 0.5216820961181742,
+        "w": 0.712683715580258
+      },
+      "print_mode": "P0"
+    },
+    "film": "fujifilm_c200",
+    "print": "fujifilm_crystal_archive_typeii",
+    "parameters_path": "data/derived-s2b/c200/fit-M4s.json",
+    "parameters_sha256": "042bd842562fe6c97b7484f2feade1a8e0a19fdff18888347fb19f1ba6b7b34b",
+    "model_path": "tools/model_s2.py",
+    "model_sha256": "3be8a32ed7ce87b936d9f88652f93cff923098cc0cc7e40de6994de9d9dbf19a",
+    "stock_adapter_sha256": "f2681b8a5204a75ce099c5ab78988dcd2d63206e956921fccbfa36d513f957d1",
+    "table_sha256": "7860725be4fbb7536aaab4d90d5787f0a0f2f27924a3b6b527bdf77d9a046c0a",
+    "profiles": {
+      "fujifilm_c200.json": "30db07d88090aadc62e03d18c2c51f67a20a1673390c69f99933b7ed5406d2c8",
+      "fujifilm_crystal_archive_typeii.json": "0db98e5b8e2ed5248696e62bc39b7f21459a8812d64049b1275d7be995af873b"
+    }
+  },
+  "input": {
+    "color_space": "scene-linear ProPhoto RGB (ROMM primaries), D50",
+    "middle_gray": 0.18,
+    "encoding": "e = clip((log2(max(v, 0.18*2^lo)/0.18)-lo)/(hi-lo), 0, 1)",
+    "lo": -9.0,
+    "hi": 8.0,
+    "v_lo": 0.0003515625,
+    "v_hi": 46.08,
+    "clamping": "per channel: v<=v_lo (including zero/negative) maps to 0; v>=v_hi maps to 1",
+    "grid": "s_i=i/(n-1); e_i=P_w^-1(s_i), inverse of the 1024-point linear-interpolated table; v_i=0.18*2^(-9+17*e_i)"
+  },
+  "output": {
+    "color_space": "linear ProPhoto RGB (ROMM primaries), D50",
+    "display_referred": true,
+    "clipped": false,
+    "range_min_RGB": [
+      0.0031990206334739923,
+      0.0038767224177718163,
+      0.005206425208598375
+    ],
+    "range_max_RGB": [
+      0.7205703854560852,
+      0.7023564577102661,
+      0.7726852893829346
+    ]
+  },
+  "size": 65,
+  "interpolation": "tetrahedral",
+  "storage": {
+    "shape": [
+      65,
+      65,
+      65,
+      3
+    ],
+    "axis_order": [
+      "b",
+      "g",
+      "r",
+      "channel"
+    ],
+    "channel_order": [
+      "R",
+      "G",
+      "B"
+    ],
+    "endianness": "little",
+    "fastest_grid_axis": "R"
+  },
+  "data_files": {
+    "f32": {
+      "name": "c200-cube65.f32",
+      "sha256": "a9004afaa5adf567ed514fdab56015e56503e672f47dd85f07e8b74fe5180c39",
+      "bytes": 3295500
+    },
+    "f16": {
+      "name": "c200-cube65.f16",
+      "sha256": "5e32f02b4b6011ab47caffb559af2e62639df2e3245f6d291f8a891623157ff2",
+      "bytes": 1647750
+    },
+    "cube": {
+      "name": "c200-cube65.cube",
+      "sha256": "9b523c897f3cc370e1b1a5819c7924a3ee3ae733b9ca065ca7da522a9d430d61",
+      "bytes": 10256085
+    },
+    "shaper_f32": {
+      "name": "c200-shaper1024.f32",
+      "sha256": "2dfe5afd6ee101f11c13d086222df263f4537a22f2570b41c9b2a4b775b7d0f8",
+      "bytes": 4096
+    },
+    "changelog": {
+      "name": "c200-CHANGELOG.txt",
+      "sha256": "25e0fe34fe125009f5ca75fd5b99f94036096e74b2eff55d0a101e33bf355f31",
+      "bytes": 3492
+    },
+    "license": {
+      "name": "SPEKTRAFILM_LICENSE.txt",
+      "sha256": "76d629501783ae52e8d63aee1e054c1e1a9713b9fe7d36fb306e25b1d14b24e9",
+      "bytes": 23677
+    }
+  },
+  "license": "CC BY-SA 4.0",
+  "attribution": "Derived from spektrafilm by Andrea Volpato, https://github.com/andreavolpato/spektrafilm",
+  "error_on_frozen_model": {
+    "budget_values": {
+      "median": 0.06336266741777223,
+      "p99": 0.30136327834697296,
+      "p99_9": 0.40114014670021025,
+      "chart_max": 0.5118379664498639,
+      "neutral_max": 0.1501382086839403
+    },
+    "delivered_f16_budget_values": {
+      "median": 0.06336266741777223,
+      "p99": 0.30136327834697296,
+      "p99_9": 0.40114014670021025,
+      "chart_max": 0.5118379664498639,
+      "neutral_max": 0.1501382086839403
+    },
+    "budgets": {
+      "median": 0.2,
+      "p99": 0.5,
+      "p99_9": 1.0,
+      "chart_max": 1.0,
+      "neutral_max": 0.3
+    },
+    "metric": "D50 CIEDE2000, unclipped outputs before TIFF",
+    "evaluated_photos": 7,
+    "interpolation": "tetrahedral",
+    "qualification_precision": "f16"
+  },
+  "output_encoding": {
+    "name": "linear",
+    "forward": "identity",
+    "inverse": "identity",
+    "stored_range_min_RGB": [
+      0.0031990206334739923,
+      0.0038767224177718163,
+      0.005206425208598375
+    ],
+    "stored_range_max_RGB": [
+      0.7205703854560852,
+      0.7023564577102661,
+      0.7726852893829346
+    ],
+    "negative_values": "linear branch, no clipping"
+  },
+  "shaper": {
+    "w": 0.25,
+    "K": 1024,
+    "sample_domain": "e_k=k/1023",
+    "interpolation": "linear",
+    "file": "c200-shaper1024.f32",
+    "sha256": "2dfe5afd6ee101f11c13d086222df263f4537a22f2570b41c9b2a4b775b7d0f8",
+    "dtype": "little-endian float32",
+    "generation_points": 4097,
+    "density": "w*abs(np.gradient(N,e))/mean(abs(np.gradient(N,e)))+(1-w)",
+    "integration": "trapezoidal, then normalize to [0,1]",
+    "bake_precision": "1024-point float64 table",
+    "serialization_validation": "data/derived-s3b/c200/lut-delivery.json"
+  },
+  "path": [
+    {
+      "step": 1,
+      "operation": "log_encode",
+      "formula": "e = clip((log2(max(v, 0.18*2^lo)/0.18)-lo)/(hi-lo), 0, 1)"
+    },
+    {
+      "step": 2,
+      "operation": "shaper",
+      "formula": "s=P_w(e), linear interpolation of 1024 scalar samples per channel"
+    },
+    {
+      "step": 3,
+      "operation": "cube",
+      "formula": "q=tetrahedral(cube,s)"
+    },
+    {
+      "step": 4,
+      "operation": "output_decode",
+      "formula": "identity"
+    }
+  ],
+  "s3b": {
+    "gray_axis_relaxed": false,
+    "photo_model_references": "data/derived-s3b/c200/photo-model-references.json",
+    "candidate_provenance": "data/derived-s3b/c200/w25-provenance.json"
+  }
+}

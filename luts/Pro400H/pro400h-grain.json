@@ -1,0 +1,41 @@
+{
+  "name": "pro400h grain",
+  "version": "grain-v3",
+  "stock": "pro400h",
+  "table": {
+    "file": "pro400h-grain.f32",
+    "sha256": "4363f49dd4f7b70597f8c12b059d1d0bdd12bdc164e5e57f64274694520f4da6",
+    "floats": 3076
+  },
+  "format": "Little-endian Float32: G[0:768] at i*3+c, K[768:3072] at 768+i*9+row*3+col (row=exposure, col=density), cell_um[3072], version=3[3073], zero padding[3074:3076]; i=0..255 at e_n=i/255.",
+  "lut": "pro400h-lut.json",
+  "film_profile": {
+    "file": "fujifilm_pro_400h.json",
+    "sha256": "da1be731ab79fb5535c43042494fa7298c942179abb68270b928aa012c629b31",
+    "upstream_commit": "3bb2c2d"
+  },
+  "frame": "135 film; long side = min(36, 24 × long/short) mm",
+  "model": {
+    "kappa_RGB": [
+      0.871301679222894,
+      0.6115479221734066,
+      1.5724441332777799
+    ],
+    "cell_um": 8.652742849097049,
+    "floor_phi": 0.17025893879956122,
+    "sublayer_ratio_r": 1.35,
+    "jacobian_regularization": 0.02,
+    "rewrite_clamp_stops": 1
+  },
+  "calibration": "Fitted to grain statistics (Lab standard deviations and pixel autocorrelation) measured on flat patches in reference renderings.",
+  "acceptance": {
+    "B_median": 0.017839690430975646,
+    "B_max": 0.5121800055634368,
+    "Bprime_max_ratio": 0.5067680559190544,
+    "C_L": 0.026337847609205364,
+    "C_C": 0.04792831933835412
+  },
+  "exception": "Accepted exception: -3 EV rho(1) difference 0.08606234944 (ordinary limit 0.08, accepted limit 0.13); -2 EV rho(1) difference 0.08794968254 (ordinary limit 0.08, accepted limit 0.13); -1 EV rho(1) difference 0.08184594884 (ordinary limit 0.08, accepted limit 0.13); +3 EV absolute ln sigma_L ratio 0.5121800056 (ordinary limit 0.45, accepted limit 0.55).",
+  "notes": [],
+  "attribution": "Derived from spektrafilm by Andrea Volpato, https://github.com/andreavolpato/spektrafilm, licensed CC BY-SA 4.0. Modified by gwongsam (Stillwell)."
+}

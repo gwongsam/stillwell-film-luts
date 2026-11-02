@@ -1,0 +1,41 @@
+{
+  "name": "portra800 grain",
+  "version": "grain-v3",
+  "stock": "portra800",
+  "table": {
+    "file": "portra800-grain.f32",
+    "sha256": "c776c9b121f7a9077083d99dda984d6c4232a0a94d4d7ab10a315ba07e4bd319",
+    "floats": 3076
+  },
+  "format": "Little-endian Float32: G[0:768] at i*3+c, K[768:3072] at 768+i*9+row*3+col (row=exposure, col=density), cell_um[3072], version=3[3073], zero padding[3074:3076]; i=0..255 at e_n=i/255.",
+  "lut": "portra800-lut.json",
+  "film_profile": {
+    "file": "kodak_portra_800.json",
+    "sha256": "5b0c6e861c6273a2ecdf552525e80738037918e650a0dc206e095acfd02f8b43",
+    "upstream_commit": "3bb2c2d"
+  },
+  "frame": "135 film; long side = min(36, 24 × long/short) mm",
+  "model": {
+    "kappa_RGB": [
+      0.6619851101049956,
+      0.6727277496792139,
+      1.7304191056850524
+    ],
+    "cell_um": 7.776069165049812,
+    "floor_phi": 1.4406062518419597e-19,
+    "sublayer_ratio_r": 1.35,
+    "jacobian_regularization": 0.02,
+    "rewrite_clamp_stops": 1
+  },
+  "calibration": "Fitted to grain statistics (Lab standard deviations and pixel autocorrelation) measured on flat patches in reference renderings.",
+  "acceptance": {
+    "B_median": 0.03155818480641343,
+    "B_max": 0.32637980390709187,
+    "Bprime_max_ratio": 0.4108256620501799,
+    "C_L": 0.01901063106673421,
+    "C_C": 0.0977172402483707
+  },
+  "exception": null,
+  "notes": [],
+  "attribution": "Derived from spektrafilm by Andrea Volpato, https://github.com/andreavolpato/spektrafilm, licensed CC BY-SA 4.0. Modified by gwongsam (Stillwell)."
+}

@@ -1,0 +1,41 @@
+{
+  "name": "portra160 grain",
+  "version": "grain-v3",
+  "stock": "portra160",
+  "table": {
+    "file": "portra160-grain.f32",
+    "sha256": "dc309efcc06e606981238245e1e033bff1e5b74fd29b2abde61b0b564f13503f",
+    "floats": 3076
+  },
+  "format": "Little-endian Float32: G[0:768] at i*3+c, K[768:3072] at 768+i*9+row*3+col (row=exposure, col=density), cell_um[3072], version=3[3073], zero padding[3074:3076]; i=0..255 at e_n=i/255.",
+  "lut": "portra160-lut.json",
+  "film_profile": {
+    "file": "kodak_portra_160.json",
+    "sha256": "1bc9b65a6940f3a4381e8d14d0ac43594aff9495051992ce4d7408e761549992",
+    "upstream_commit": "3bb2c2d"
+  },
+  "frame": "135 film; long side = min(36, 24 × long/short) mm",
+  "model": {
+    "kappa_RGB": [
+      0.792612084620091,
+      0.6573761344029443,
+      1.6491152507111748
+    ],
+    "cell_um": 7.748383219771433,
+    "floor_phi": 0.013053144361756199,
+    "sublayer_ratio_r": 1.35,
+    "jacobian_regularization": 0.02,
+    "rewrite_clamp_stops": 1
+  },
+  "calibration": "Fitted to grain statistics (Lab standard deviations and pixel autocorrelation) measured on flat patches in reference renderings.",
+  "acceptance": {
+    "B_median": 0.02629962379898953,
+    "B_max": 0.4567909145389799,
+    "Bprime_max_ratio": 0.41415860372167335,
+    "C_L": 0.01908184558919817,
+    "C_C": 0.12885794762298272
+  },
+  "exception": "Accepted exception: +3 EV absolute ln sigma_L ratio 0.4567909145 (ordinary limit 0.45, accepted limit 0.55).",
+  "notes": [],
+  "attribution": "Derived from spektrafilm by Andrea Volpato, https://github.com/andreavolpato/spektrafilm, licensed CC BY-SA 4.0. Modified by gwongsam (Stillwell)."
+}

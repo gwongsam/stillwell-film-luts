@@ -1,0 +1,43 @@
+{
+  "name": "chroma64 grain",
+  "version": "grain-v3",
+  "stock": "chroma64",
+  "table": {
+    "file": "chroma64-grain.f32",
+    "sha256": "b0c333febab730fb58eb0864f820f6e23af8a2c00367f37fa365c038c8e8a236",
+    "floats": 3076
+  },
+  "format": "Little-endian Float32: G[0:768] at i*3+c, K[768:3072] at 768+i*9+row*3+col (row=exposure, col=density), cell_um[3072], version=3[3073], zero padding[3074:3076]; i=0..255 at e_n=i/255.",
+  "lut": "chroma64-lut.json",
+  "film_profile": {
+    "file": "kodak_kodachrome_64.json",
+    "sha256": "f88ede487219cf75090ed6663af6923c595707b3c48819f2ccf27122130e921d",
+    "upstream_commit": "3bb2c2d"
+  },
+  "frame": "135 film; long side = min(36, 24 × long/short) mm",
+  "model": {
+    "kappa_RGB": [
+      0.6981616443627471,
+      0.6552705383913132,
+      1.4548180624535971
+    ],
+    "cell_um": 8.56766409244432,
+    "floor_phi": 0.05972396734385982,
+    "sublayer_ratio_r": 1.35,
+    "jacobian_regularization": 0.02,
+    "rewrite_clamp_stops": 1
+  },
+  "calibration": "Fitted to grain statistics (Lab standard deviations and pixel autocorrelation) measured on flat patches in reference renderings.",
+  "acceptance": {
+    "B_median": 0.02468755626361958,
+    "B_max": 0.20260283032324794,
+    "Bprime_max_ratio": 0.6416742949207446,
+    "C_L": 0.06282482760385874,
+    "C_C": 0.26169273049996883
+  },
+  "exception": null,
+  "notes": [
+    "At +3 EV and above, highlight grain is lower than in the reference renderings by design."
+  ],
+  "attribution": "Derived from spektrafilm by Andrea Volpato, https://github.com/andreavolpato/spektrafilm, licensed CC BY-SA 4.0. Modified by gwongsam (Stillwell)."
+}

@@ -1,0 +1,41 @@
+{
+  "name": "verita200d grain",
+  "version": "grain-v3",
+  "stock": "verita200d",
+  "table": {
+    "file": "verita200d-grain.f32",
+    "sha256": "bf380b88150bf036eabbcdba9f93053db12515976201439c86a1adaabde1c8ec",
+    "floats": 3076
+  },
+  "format": "Little-endian Float32: G[0:768] at i*3+c, K[768:3072] at 768+i*9+row*3+col (row=exposure, col=density), cell_um[3072], version=3[3073], zero padding[3074:3076]; i=0..255 at e_n=i/255.",
+  "lut": "verita200d-lut.json",
+  "film_profile": {
+    "file": "kodak_verita_200d.json",
+    "sha256": "5d71a3f544721a71cfa0b0671ce1b5eda6dc1e6a09273810793d4bc821b272fc",
+    "upstream_commit": "3bb2c2d"
+  },
+  "frame": "135 film; long side = min(36, 24 × long/short) mm",
+  "model": {
+    "kappa_RGB": [
+      0.8183420244340491,
+      0.8747791747351199,
+      1.8967602093128915
+    ],
+    "cell_um": 8.554637873311718,
+    "floor_phi": 6.836204712148487e-15,
+    "sublayer_ratio_r": 1.35,
+    "jacobian_regularization": 0.02,
+    "rewrite_clamp_stops": 1
+  },
+  "calibration": "Fitted to grain statistics (Lab standard deviations and pixel autocorrelation) measured on flat patches in reference renderings.",
+  "acceptance": {
+    "B_median": 0.013345233896034894,
+    "B_max": 0.20263373357197526,
+    "Bprime_max_ratio": 0.4117082556683229,
+    "C_L": 0.04652390741090984,
+    "C_C": 0.10686725521835533
+  },
+  "exception": null,
+  "notes": [],
+  "attribution": "Derived from spektrafilm by Andrea Volpato, https://github.com/andreavolpato/spektrafilm, licensed CC BY-SA 4.0. Modified by gwongsam (Stillwell)."
+}

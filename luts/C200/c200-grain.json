@@ -1,0 +1,41 @@
+{
+  "name": "c200 grain",
+  "version": "grain-v3",
+  "stock": "c200",
+  "table": {
+    "file": "c200-grain.f32",
+    "sha256": "f2fedf3f2989b8e8746743497d0ca5d0e67b7c793741816ef791c4912eb49f4c",
+    "floats": 3076
+  },
+  "format": "Little-endian Float32: G[0:768] at i*3+c, K[768:3072] at 768+i*9+row*3+col (row=exposure, col=density), cell_um[3072], version=3[3073], zero padding[3074:3076]; i=0..255 at e_n=i/255.",
+  "lut": "c200-lut.json",
+  "film_profile": {
+    "file": "fujifilm_c200.json",
+    "sha256": "30db07d88090aadc62e03d18c2c51f67a20a1673390c69f99933b7ed5406d2c8",
+    "upstream_commit": "3bb2c2d"
+  },
+  "frame": "135 film; long side = min(36, 24 × long/short) mm",
+  "model": {
+    "kappa_RGB": [
+      1.2214275586079768,
+      0.8717374566157653,
+      2.462836189363065
+    ],
+    "cell_um": 9.037865872819975,
+    "floor_phi": 0.05523968978393626,
+    "sublayer_ratio_r": 1.35,
+    "jacobian_regularization": 0.02,
+    "rewrite_clamp_stops": 1
+  },
+  "calibration": "Fitted to grain statistics (Lab standard deviations and pixel autocorrelation) measured on flat patches in reference renderings.",
+  "acceptance": {
+    "B_median": 0.02607932556906007,
+    "B_max": 0.15645071169289604,
+    "Bprime_max_ratio": 0.7126743504115524,
+    "C_L": 0.043947354363406896,
+    "C_C": 0.06291065579278117
+  },
+  "exception": "Accepted exception: -3 EV rho(1) difference 0.1166156155 (ordinary limit 0.08, accepted limit 0.13); -2 EV rho(1) difference 0.1163371232 (ordinary limit 0.08, accepted limit 0.13); -1 EV rho(1) difference 0.1132511654 (ordinary limit 0.08, accepted limit 0.13); +0 EV rho(1) difference 0.1086235642 (ordinary limit 0.08, accepted limit 0.13); +1 EV rho(1) difference 0.105121468 (ordinary limit 0.08, accepted limit 0.13); +2 EV rho(1) difference 0.1000204055 (ordinary limit 0.08, accepted limit 0.13).",
+  "notes": [],
+  "attribution": "Derived from spektrafilm by Andrea Volpato, https://github.com/andreavolpato/spektrafilm, licensed CC BY-SA 4.0. Modified by gwongsam (Stillwell)."
+}

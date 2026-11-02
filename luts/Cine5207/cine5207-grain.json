@@ -1,0 +1,41 @@
+{
+  "name": "cine5207 grain",
+  "version": "grain-v3",
+  "stock": "cine5207",
+  "table": {
+    "file": "cine5207-grain.f32",
+    "sha256": "83d0b9b9893dff9e6c44b2c017b50370b72603edd73ea4214902605f7c0d0509",
+    "floats": 3076
+  },
+  "format": "Little-endian Float32: G[0:768] at i*3+c, K[768:3072] at 768+i*9+row*3+col (row=exposure, col=density), cell_um[3072], version=3[3073], zero padding[3074:3076]; i=0..255 at e_n=i/255.",
+  "lut": "cine5207-lut.json",
+  "film_profile": {
+    "file": "kodak_vision3_250d.json",
+    "sha256": "9ab85c8627c0533beb925b747e441e93beabe9e98c2429695b0a53866b56fcc7",
+    "upstream_commit": "3bb2c2d"
+  },
+  "frame": "135 film; long side = min(36, 24 × long/short) mm",
+  "model": {
+    "kappa_RGB": [
+      0.5337156979501199,
+      0.6992414490558594,
+      1.701373395545414
+    ],
+    "cell_um": 8.078641086918294,
+    "floor_phi": 4.1149127886198736e-17,
+    "sublayer_ratio_r": 1.35,
+    "jacobian_regularization": 0.02,
+    "rewrite_clamp_stops": 1
+  },
+  "calibration": "Fitted to grain statistics (Lab standard deviations and pixel autocorrelation) measured on flat patches in reference renderings.",
+  "acceptance": {
+    "B_median": 0.03770212966906574,
+    "B_max": 0.27626211439611287,
+    "Bprime_max_ratio": 0.9335958335379688,
+    "C_L": 0.032259839103138926,
+    "C_C": 0.11451462487569361
+  },
+  "exception": null,
+  "notes": [],
+  "attribution": "Derived from spektrafilm by Andrea Volpato, https://github.com/andreavolpato/spektrafilm, licensed CC BY-SA 4.0. Modified by gwongsam (Stillwell)."
+}

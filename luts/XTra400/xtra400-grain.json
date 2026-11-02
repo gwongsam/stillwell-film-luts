@@ -1,0 +1,41 @@
+{
+  "name": "xtra400 grain",
+  "version": "grain-v3",
+  "stock": "xtra400",
+  "table": {
+    "file": "xtra400-grain.f32",
+    "sha256": "cfab767ca052a32123d940e29f70f56c71140e89e5dd83cbe5eda6916becc63a",
+    "floats": 3076
+  },
+  "format": "Little-endian Float32: G[0:768] at i*3+c, K[768:3072] at 768+i*9+row*3+col (row=exposure, col=density), cell_um[3072], version=3[3073], zero padding[3074:3076]; i=0..255 at e_n=i/255.",
+  "lut": "xtra400-lut.json",
+  "film_profile": {
+    "file": "fujifilm_xtra_400.json",
+    "sha256": "5f2a3642c7c8db5e750d7366c34b47d24b89ad78d2abe41da4b5282fd4286e58",
+    "upstream_commit": "3bb2c2d"
+  },
+  "frame": "135 film; long side = min(36, 24 × long/short) mm",
+  "model": {
+    "kappa_RGB": [
+      0.6014458323824121,
+      0.36595621473006956,
+      1.1186602940454207
+    ],
+    "cell_um": 8.6994440462448,
+    "floor_phi": 1.0,
+    "sublayer_ratio_r": 1.35,
+    "jacobian_regularization": 0.02,
+    "rewrite_clamp_stops": 1
+  },
+  "calibration": "Fitted to grain statistics (Lab standard deviations and pixel autocorrelation) measured on flat patches in reference renderings.",
+  "acceptance": {
+    "B_median": 0.041737310635117764,
+    "B_max": 0.16718329391347694,
+    "Bprime_max_ratio": 0.8579892398188531,
+    "C_L": 0.0569841493369353,
+    "C_C": 0.04275705685792135
+  },
+  "exception": "Accepted exception: -3 EV rho(1) difference 0.09235086119 (ordinary limit 0.08, accepted limit 0.13); -2 EV rho(1) difference 0.09627138448 (ordinary limit 0.08, accepted limit 0.13); -1 EV rho(1) difference 0.09152437707 (ordinary limit 0.08, accepted limit 0.13); +0 EV rho(1) difference 0.08309522148 (ordinary limit 0.08, accepted limit 0.13); +1 EV rho(1) difference 0.08140645149 (ordinary limit 0.08, accepted limit 0.13); F: floor_phi reaches its accepted upper bound 1.",
+  "notes": [],
+  "attribution": "Derived from spektrafilm by Andrea Volpato, https://github.com/andreavolpato/spektrafilm, licensed CC BY-SA 4.0. Modified by gwongsam (Stillwell)."
+}

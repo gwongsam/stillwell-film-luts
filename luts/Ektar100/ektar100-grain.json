@@ -1,0 +1,41 @@
+{
+  "name": "ektar100 grain",
+  "version": "grain-v3",
+  "stock": "ektar100",
+  "table": {
+    "file": "ektar100-grain.f32",
+    "sha256": "24ac5edd5147aa6b88e387a1d3a10f31eb0ea23f911b58975a78ac9eae89865b",
+    "floats": 3076
+  },
+  "format": "Little-endian Float32: G[0:768] at i*3+c, K[768:3072] at 768+i*9+row*3+col (row=exposure, col=density), cell_um[3072], version=3[3073], zero padding[3074:3076]; i=0..255 at e_n=i/255.",
+  "lut": "ektar100-lut.json",
+  "film_profile": {
+    "file": "kodak_ektar_100.json",
+    "sha256": "60acbd46c75005771569eafb97f534a4495e9d4e1e9c1e419b90cea2676ec7cf",
+    "upstream_commit": "3bb2c2d"
+  },
+  "frame": "135 film; long side = min(36, 24 × long/short) mm",
+  "model": {
+    "kappa_RGB": [
+      0.5822966157915543,
+      0.4160629365627727,
+      1.1172417488754207
+    ],
+    "cell_um": 7.707798661839988,
+    "floor_phi": 0.4008140077623694,
+    "sublayer_ratio_r": 1.35,
+    "jacobian_regularization": 0.02,
+    "rewrite_clamp_stops": 1
+  },
+  "calibration": "Fitted to grain statistics (Lab standard deviations and pixel autocorrelation) measured on flat patches in reference renderings.",
+  "acceptance": {
+    "B_median": 0.037331449570917156,
+    "B_max": 0.2144099814496136,
+    "Bprime_max_ratio": 0.36434673444992316,
+    "C_L": 0.0452451978304354,
+    "C_C": 0.13043559606491054
+  },
+  "exception": null,
+  "notes": [],
+  "attribution": "Derived from spektrafilm by Andrea Volpato, https://github.com/andreavolpato/spektrafilm, licensed CC BY-SA 4.0. Modified by gwongsam (Stillwell)."
+}

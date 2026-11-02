@@ -1,0 +1,43 @@
+{
+  "name": "velvia100 grain",
+  "version": "grain-v3",
+  "stock": "velvia100",
+  "table": {
+    "file": "velvia100-grain.f32",
+    "sha256": "2a912d9397d0e4e0a346deb252f097a9aeadb12b492095a09b64c9f90af0ce28",
+    "floats": 3076
+  },
+  "format": "Little-endian Float32: G[0:768] at i*3+c, K[768:3072] at 768+i*9+row*3+col (row=exposure, col=density), cell_um[3072], version=3[3073], zero padding[3074:3076]; i=0..255 at e_n=i/255.",
+  "lut": "velvia100-lut.json",
+  "film_profile": {
+    "file": "fujifilm_velvia_100.json",
+    "sha256": "af696fa9662e0483cb9428d2939675044f2016fc3fad760b50a20a0a586fc04b",
+    "upstream_commit": "3bb2c2d"
+  },
+  "frame": "135 film; long side = min(36, 24 × long/short) mm",
+  "model": {
+    "kappa_RGB": [
+      0.9524725692440177,
+      0.6074708279286886,
+      1.6326130296237136
+    ],
+    "cell_um": 8.5150457121155,
+    "floor_phi": 0.037056645586130275,
+    "sublayer_ratio_r": 1.35,
+    "jacobian_regularization": 0.02,
+    "rewrite_clamp_stops": 1
+  },
+  "calibration": "Fitted to grain statistics (Lab standard deviations and pixel autocorrelation) measured on flat patches in reference renderings.",
+  "acceptance": {
+    "B_median": 0.053609785032117066,
+    "B_max": 0.2828555861803272,
+    "Bprime_max_ratio": 0.934038638084536,
+    "C_L": 0.1300332614644145,
+    "C_C": 0.2586777319990681
+  },
+  "exception": null,
+  "notes": [
+    "At +3 EV and above, highlight grain is lower than in the reference renderings by design."
+  ],
+  "attribution": "Derived from spektrafilm by Andrea Volpato, https://github.com/andreavolpato/spektrafilm, licensed CC BY-SA 4.0. Modified by gwongsam (Stillwell)."
+}

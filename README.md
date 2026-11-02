@@ -4,6 +4,8 @@ The twenty colour film looks used by the Stillwell camera app, published as open
 They are derived from [spektrafilm](https://github.com/andreavolpato/spektrafilm) by Andrea Volpato
 and shared under the same license, CC BY-SA 4.0.
 
+The collection now also includes a separate grain table for each stock.
+
 ```
 Derived from spektrafilm by Andrea Volpato
 https://github.com/andreavolpato/spektrafilm
@@ -21,8 +23,15 @@ reference renderings of that pairing, and baked into a 65³ lookup table. Each s
 `*-CHANGELOG.txt` records the exact profiles, upstream commit (3bb2c2d), fit and bake, and the
 measured baking error.
 
-These are per-pixel colour tables only. Spatial effects (halation, grain, coupler diffusion) are
-not included.
+The colour tables are per-pixel; grain is supplied as separate data tables. Halation and coupler
+diffusion are not included.
+
+The grain tables use spektrafilm's light-sensitive layer and sublayer data
+(`density_curves_layers`) to derive grain strength for each layer and sublayer. Five parameters
+per stock (three channel strengths, a spatial cell size and a variance floor), plus one shared
+sublayer amplitude ratio, were fitted to grain statistics on flat patches in reference
+renderings: Lab standard deviations and pixel autocorrelation. The original profiles remain
+unmodified; the resulting grain tables are shared under the same CC BY-SA 4.0 license.
 
 ## Stocks
 
@@ -60,10 +69,12 @@ Slides are viewed directly.
 | `<id>-cube65.cube` | The same table as text (float32 values, nine significant digits) |
 | `<id>-shaper1024.f32` | 1024-point input shaper, little-endian float32 |
 | `<id>-lut.json` | Full encoding, provenance and error budgets |
+| `<id>-grain.f32` | 256 grain-strength samples and exposure-rewrite matrices, plus cell size and version; 3076 little-endian float32 values |
+| `<id>-grain.json` | Grain-table layout, provenance, fitted parameters, measured acceptance statistics and exceptions |
 | `<id>-CHANGELOG.txt` | How the table was derived, as the license asks |
 | `SPEKTRAFILM_LICENSE.txt` | The license, unmodified |
 
-The `.f16`, shaper, JSON and CHANGELOG files are byte-identical to the copies inside the app.
+The `.f16`, shaper, grain, JSON and CHANGELOG files are byte-identical to the copies inside the app.
 `lut.json` also lists a binary `.f32` table; it is left out here because the `.cube` carries the
 same float32 values.
 
@@ -84,6 +95,64 @@ The output is **linear ProPhoto RGB (D50), display-referred and unclipped**: the
 response is already in it, so convert it to your display space (for example sRGB or Rec. 709)
 without adding another tone curve. Because of the shaper, the `.cube` file alone is not a drop-in
 LUT for grading software; the shaper step has to be applied first.
+
+## How to apply the grain table
+
+Apply grain to the same log-encoded input `eₙ` as step 1 above, **before the shaper**.
+Each `-grain.f32` contains 3076 little-endian IEEE float32 values (12,304 bytes). Indices below
+are zero-based and ranges exclude their upper endpoint. The 256 nodes are `eₙ,i = i / 255`.
+
+| Float indices | Contents |
+|---|---|
+| `[0, 768)` | Grain strength `G_c(eₙ,i)` in density · µm, at `i · 3 + c`, with c = R, G, B |
+| `[768, 3072)` | 256 row-major 3 × 3 matrices `K_i`, at `768 + i · 9 + row · 3 + col`; row is the output exposure channel, col is the density channel |
+| `3072` | Spatial cell size `cell_um`, in µm |
+| `[3073, 3076)` | Format version `3`, followed by two zero padding values |
+
+Interpolate `G_R`, `G_G` and `G_B` linearly at their **own channel's** `eₙ` value. Interpolate all
+nine entries of `K` at the single mean `ē = (eₙ,R + eₙ,G + eₙ,B) / 3`. Clamp interpolation
+coordinates to the endpoints. `K` maps density perturbations back to log exposure; it is the
+regularized inverse of the model's density Jacobian, with `λ = 0.02 · ‖J‖_F` and
+`K = (JᵀJ + λ²I)⁻¹Jᵀ` (zero where J is exactly zero).
+
+Generate one independent, zero-mean random field `U_c` per channel, with low-frequency power
+spectral density `W0 = 1 µm²` and spatial correlation scale `cell_um`. Map the image onto a
+135 film frame: for long and short image dimensions `L` and `S` in pixels,
+
+```text
+long_side_mm = min(36, 24 · L / S)
+p = L / (1000 · long_side_mm)            pixels per µm
+cell_pixels = cell_um · p
+```
+
+Normalize the fields in film-area units and integrate them over the pixel footprint. In
+particular, preserve `W0` when a cell is smaller than a pixel; unit-variance pixel noise at every
+resolution would change the grain's physical strength. `cell_um` sets the spatial scale, while
+the sampled `G` already contains the fitted channel strengths, sublayer ratio and variance floor.
+Do not multiply those parameters into `G` again.
+
+For each pixel, use componentwise multiplication for `G · U`, matrix multiplication for
+`K · δD`, and componentwise clamps:
+
+```text
+δD = m · G · U
+δeₙ = clamp(K(ē) · δD, −1/17, +1/17)
+eₙ′ = clamp(eₙ + δeₙ, 0, 1)
+```
+
+Then apply the usual shaper to `eₙ′` and look up the colour table. `m = 1` is that stock's own
+calibrated grain; `m = 0` leaves the original colour-table input unchanged. For video, generate
+an independent field for each frame.
+
+The grain JSON's `acceptance` values are measured statistics, not limits: `B_median` and `B_max`
+are the median and maximum absolute natural-log ratios of Lab grain standard deviations on
+visible neutral patches; `Bprime_max_ratio` is the largest absolute error divided by its allowed
+error, `max([0.25, 0.5, 0.5], 0.35 · reference_sigma)` for L*, a*, b*. `C_L` and `C_C` are the
+median absolute natural-log ratios of luminance and chroma grain standard deviations on colour
+patches. Neutral patches enter B when reference `sigma_L` is at least 0.25; B′ includes all
+neutral patches. For the four slide stocks, neutral highlights at +3 EV and above are excluded
+from B and B′: their lower highlight grain is an intentional model choice. Each JSON records any
+accepted exception separately.
 
 ## Accuracy
 

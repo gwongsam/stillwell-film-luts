@@ -1,0 +1,43 @@
+{
+  "name": "provia100f grain",
+  "version": "grain-v3",
+  "stock": "provia100f",
+  "table": {
+    "file": "provia100f-grain.f32",
+    "sha256": "578fb9eab6da545569044b08c464cddc1243c65c4fe729aaf71ada8b4c8efcec",
+    "floats": 3076
+  },
+  "format": "Little-endian Float32: G[0:768] at i*3+c, K[768:3072] at 768+i*9+row*3+col (row=exposure, col=density), cell_um[3072], version=3[3073], zero padding[3074:3076]; i=0..255 at e_n=i/255.",
+  "lut": "provia100f-lut.json",
+  "film_profile": {
+    "file": "fujifilm_provia_100f.json",
+    "sha256": "f061f7aa55e3fefe1c89ee2edb8555a2d44fe8167d02f663c787067d131137b6",
+    "upstream_commit": "3bb2c2d"
+  },
+  "frame": "135 film; long side = min(36, 24 × long/short) mm",
+  "model": {
+    "kappa_RGB": [
+      0.7330150491693135,
+      0.5414490509232393,
+      1.3917122678947327
+    ],
+    "cell_um": 7.844571420442438,
+    "floor_phi": 0.047751670591616564,
+    "sublayer_ratio_r": 1.35,
+    "jacobian_regularization": 0.02,
+    "rewrite_clamp_stops": 1
+  },
+  "calibration": "Fitted to grain statistics (Lab standard deviations and pixel autocorrelation) measured on flat patches in reference renderings.",
+  "acceptance": {
+    "B_median": 0.0352672624460994,
+    "B_max": 0.26827438771490064,
+    "Bprime_max_ratio": 0.8791597406512797,
+    "C_L": 0.10233342707781592,
+    "C_C": 0.14700452802401717
+  },
+  "exception": null,
+  "notes": [
+    "At +3 EV and above, highlight grain is lower than in the reference renderings by design."
+  ],
+  "attribution": "Derived from spektrafilm by Andrea Volpato, https://github.com/andreavolpato/spektrafilm, licensed CC BY-SA 4.0. Modified by gwongsam (Stillwell)."
+}

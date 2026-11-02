@@ -1,0 +1,41 @@
+{
+  "name": "gold200 grain",
+  "version": "grain-v3",
+  "stock": "gold200",
+  "table": {
+    "file": "gold200-grain.f32",
+    "sha256": "8bbe4ff28f5c8ac333794ab502a28b94766a59dbd6f2e6de3a176ab7173f4792",
+    "floats": 3076
+  },
+  "format": "Little-endian Float32: G[0:768] at i*3+c, K[768:3072] at 768+i*9+row*3+col (row=exposure, col=density), cell_um[3072], version=3[3073], zero padding[3074:3076]; i=0..255 at e_n=i/255.",
+  "lut": "gold200-lut.json",
+  "film_profile": {
+    "file": "kodak_gold_200.json",
+    "sha256": "aa8a0c1c7851fface3752f968cdf6c6d74a26fc9756a4460d3155d2382506b7c",
+    "upstream_commit": "3bb2c2d"
+  },
+  "frame": "135 film; long side = min(36, 24 × long/short) mm",
+  "model": {
+    "kappa_RGB": [
+      0.7348270428250654,
+      0.5652153997996381,
+      1.4677626793686964
+    ],
+    "cell_um": 7.770867822743196,
+    "floor_phi": 0.050264566311283586,
+    "sublayer_ratio_r": 1.35,
+    "jacobian_regularization": 0.02,
+    "rewrite_clamp_stops": 1
+  },
+  "calibration": "Fitted to grain statistics (Lab standard deviations and pixel autocorrelation) measured on flat patches in reference renderings.",
+  "acceptance": {
+    "B_median": 0.023847395697610695,
+    "B_max": 0.38222058547479737,
+    "Bprime_max_ratio": 0.39341135808486893,
+    "C_L": 0.023794031549128153,
+    "C_C": 0.15521699957229004
+  },
+  "exception": null,
+  "notes": [],
+  "attribution": "Derived from spektrafilm by Andrea Volpato, https://github.com/andreavolpato/spektrafilm, licensed CC BY-SA 4.0. Modified by gwongsam (Stillwell)."
+}
